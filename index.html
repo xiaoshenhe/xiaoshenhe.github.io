@@ -3,660 +3,368 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——小站首页 | Hexo</title>
+  
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/css/public.css" />
-  <link rel="stylesheet" href="/css/layout.css" />
-  <link rel="stylesheet" href="/css/iconfont.css" />
-  <link rel="stylesheet" href="/css/APlayer.min.css" />
-  <script src="/js/APlayer.min.js"></script>
-  <script src="/js/jquery.min.js"></script>
-  <script src="/js/jquery.pjax.min.js"></script>
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-  <script>
-    document.title = `我的技术与生活——小站首页`
-  </script>
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<style>
-  .load {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(37, 35, 40);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 9999;
-  }
-  .load-circle {
-    width: 80px;
-    height: 80px;
-    border: 8px solid orange;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: rotate 1s linear infinite;
-    filter: drop-shadow(0 0 3px orange);
-  }
-  .load-circle-inner {
-    width: 40px;
-    height: 40px;
-    border: 8px solid orange;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: rotate-reverse .5s linear infinite;
-  }
-  .load-text {
-    margin-top: 20px;
-    font-size: 24px;
-    color: orange;
-    display: flex;
-  }
-  .load-text span {
-    margin: 0 5px;
-    text-shadow: 5px 5px 5px orange;
-    animation: move 1s linear infinite;
-  }
-  .load-text span:nth-child(1) {
-    animation-delay: -0.6s;
-  }
-  .load-text span:nth-child(2) {
-    animation-delay: -0.5s;
-  }
-  .load-text span:nth-child(3) {
-    animation-delay: -0.4s;
-  }
-  .load-text span:nth-child(4) {
-    animation-delay: -0.3s;
-  }
-  .load-text span:nth-child(5) {
-    animation-delay: -0.2s;
-  }
-  .load-text span:nth-child(6) {
-    animation-delay: -0.1s;
-  }
-  @keyframes rotate {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(360deg); }
-  }
-  @keyframes rotate-reverse {
-    0% { transform: rotate(0); }
-    100% { transform: rotate(-360deg); }
-  }
-  @keyframes move {
-    0% { transform: translateY(0%) rotate(0) scale(1); }
-    20% { transform: translateY(20%) rotate(10deg) scale(1.2); }
-    80% { transform: translateY(-10%) rotate(-20deg) scale(.8);}
-    100% { transform: translateY(0) rotate(0) scale(1); }
-  }
-
-  .progress {
-    position: fixed;
-    left: 0; top: 0;
-    width: 0;
-    height: 3px;
-    background-color: green;
-    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .1s;
-    z-index: 9999;
-  }
-
-  .to-up {
-    animation: toUp .5s 1;
-  }
-  .gray {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    display: none;
-    pointer-events: none;
-    background-color: #000;
-    mix-blend-mode: color;
-  }
-  @keyframes toUp {
-    from { transform: translateY(15px); opacity: 0; }
-    to { transform: translateY(0) ; opacity: 1; }
-  }
-</style>
 <body>
-  <div id="load" class="load">
-    <div class="load-circle">
-      <div class="load-circle-inner"></div>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
     </div>
-    <p class="load-text">
-      <span>L</span>
-      <span>O</span>
-      <span>A</span>
-      <span>D</span>
-      <span>I</span>
-      <span>N</span>
-      <span>G</span>
-    </p>
-  </div>
-  <div id="container" class="container w-100 vh-100" style="display: none;">
-    <header class="header">
-  <div class="header-wrapper">
-    <div class="header-left">
-      <div class="header-search">
-        <input id="search-input" type="text" class="header-search--input" placeholder="请输入要检索的文章标题" />
-        <span id="search-btn" class="header-search--icon"><i class="iconfont icon-sousuo"></i></span>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
-      <div id="search-layer" class="header-search--layer hidden">
-        <p class="title">
-          <span>以下是搜索内容：</span>
-          <span id="close-layer-btn">关闭</span>
-        </p>
-        <ul>
-        </ul>
-      </div>
-    </div>
-    <div class="header-right">
-      <ul class="header-menu">
-        <li>
-          <a href="http://example.com/">
-            <i class="header-menu--icon iconfont icon-shouye"></i>
-            <span class="header-menu--span">首页</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://example.com/log">
-            <i class="header-menu--icon iconfont icon-rizhi"></i>
-            <span class="header-menu--span">日志</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://example.com/link">
-            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
-            <span class="header-menu--span">友情链接</span>
-          </a>
-        </li>
-        <li>
-          <a href="http://example.com/about">
-            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
-            <span class="header-menu--span">关于我</span>
-          </a>
-        </li>
-      </ul>
     </div>
   </div>
 </header>
 
-<script>
-  const ipt = document.querySelector('#search-input')
-  const btn = document.querySelector('#search-btn')
-  const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"利用github搭建hexo博客","path":"2023/11/30/利用github搭建hexo博客/"},{"title":"部署图床","path":"2023/11/30/部署图床/"},{"title":"笔记","path":"2023/11/30/笔记/"},{"title":"钓鱼网站","path":"2023/11/30/钓鱼网站/"}]`)
-  ipt.addEventListener('keyup', e => {
-    if (e.key === 'Enter') {
-      handleSearch()
-    }
-  })
-  btn.addEventListener('click', () => {
-    handleSearch()
-  })
-
-  document.querySelector('#close-layer-btn').addEventListener('click', () => {
-    layer.classList.toggle('hidden')
-  })
-
-  function handleSearch() {
-    if (ipt.value.trim() === '') {
-      return
-    }
-    let html = ''
-    const targetPosts = posts.filter(post => post.title.includes(ipt.value))
-    targetPosts.forEach(post => {
-      html += `
-        <li>
-          <div>
-            <a href="/${post.path}">${post.title.replace(new RegExp(ipt.value), `<span>${ipt.value}</span>`)}</a>
-          </div>
-          <img src="${post.cover || '/imgs/default-cover.webp' }" />
-        </li>
-      `
-    })
-    if (html.trim () === '') {
-      html += '<p class="empty">没有搜索到内容</p>'
-    }
-    layer.querySelector('ul').innerHTML = html
-    layer.classList.remove('hidden')
-  }
-</script> 
-    <section id="main" class="main">
-      <div class="main-left-wrapper">
-<div class="main-left">
-  <div class="main-left--block">
-    <div class="main-left--info">
-      <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
-      <div class="main-left--intro">
-        <p class="main-left--name">xiao.</p>
-        <div class="main-left--tags">
-          <span class="main-left--tag">学习</span>
-          <span class="main-left--tag">摸鱼</span>
-        </div>
-      </div>
-    </div>
+      <div class="outer">
+        <section id="main">
   
-    <div>
-      <div class="main-left--motto">
-        <p>“天下莫弱于水，而攻坚者莫之能胜，”</p>
-        <p>“上善若水。”</p>
-      </div>
-      <div class="main-left--github">
-        <span class="line"></span>
-        <a target="_blank" rel="noopener" href="https://github.com/Aizener"><i class="logo iconfont icon-github-fill"></i></a>
-        <span class="line"></span>
-      </div>
-      <div class="main-left--statics">
-        <a href="/categories">
-          <div>
-            <span>0</span>
-            <span>分类</span>
-          </div>
-        </a>
-        <a href="/tags">
-          <div>
-            <span>0</span>
-            <span>标签</span>
-          </div>
-        </a>
-        <a href="/archives">
-          <div>
-            <span>1 </span>
-            <span>归档</span>
-          </div>
-        </a>
-      </div>
+    <article id="post-部署图床" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/30/%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/" class="article-date">
+  <time class="dt-published" datetime="2023-11-30T13:03:24.000Z" itemprop="datePublished">2023-11-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/11/30/%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/">部署图床</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>1.介绍与前提</strong><br>1.接着上一篇搭建博客的文章<br>2.typora是一个Markdown格式的编辑器<br>3.PicGo是一个自动上传图片到图床的工具<br>下载并安装<a target="_blank" rel="noopener" href="https://picgo-release.molunerfinn.com/2.4.0-beta.6/PicGo-Setup-2.4.0-beta.6-x64.exe">PicGo</a><br>下载正版<a target="_blank" rel="noopener" href="https://typoraio.cn/">Typora</a><br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/zip/40675928/1701346463815-886b8cd5-a2c5-4b16-90bd-a90c15d83d82.zip?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/zip/40675928/1701346463815-886b8cd5-a2c5-4b16-90bd-a90c15d83d82.zip%22,%22name%22:%22typora%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6.zip%22,%22size%22:71320370,%22ext%22:%22zip%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22ub5b3738a-badc-4eda-95fc-2b000c93f20%22,%22taskType%22:%22upload%22,%22type%22:%22application/x-zip-compressed%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22s6kAr%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">typora替换文件.zip</a><br>复制替换文件到Typora的resources中进行替换<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701346912573-3d9cd459-b5c1-480d-ad6f-9a02ae745a7c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347017956-f021011c-c87f-44e9-b66c-324e3aeedc81.png" alt="image.png"><br>替换好了之后把邮箱和序列号输入到正版Typora中激活就可以用了<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347195179-e606e0f3-cf65-400c-bec6-3c8da6e0d624.png" alt="image.png"><br><strong>2.搭建</strong><br><strong>思路：</strong></p>
+<ol>
+<li>ypora向本地的36677端口发送图片上传的请求</li>
+<li>PicGo默认监听本地36677端口，并将监听的数据以接口的形式发送到，指定Lskypro所在的图床，返回一个链接</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701346288681-0445e883-cea4-44bd-b670-d824a0d74bb4.png" alt="cbb396354ac291802a111adb1de18f1.png"><br>开始搭建<br>typora-偏好设置（点击文件找到偏好设置）<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347426852-a3e47e44-d93d-4b73-b83f-436e4844e5be.png" alt="image.png"><br>PicGo路径要找准精确到PicGo.exe<br>新建一个存储库，用来当图库，并在用户设置里获得token<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347618647-f0ddf911-bd81-4837-b1f3-64e841639364.png" alt="image.png"></p>
+<p>点击用户设置最下面的&lt;&gt;Developer settings，然后按图操作<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348180756-4b95e308-3ad6-4a5c-8906-e304858edaac.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348316663-2dc1f238-085c-497f-bee6-7bec85a5d99c.png" alt="image.png"><br>note名随便写一个，Select scopes选项前3个都选上也行。<br>然后复制token<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348530873-6945db63-82f5-4a05-a589-f5db2289a745.png" alt="image.png"><br>然后到PicGo的图床设置里把token复制进去<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347543450-7f1c7155-0564-4a7e-83aa-fa1694ecf991.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347570756-9e73804d-bd46-4fa1-bbb9-7f808fd066a5.png" alt="image.png"><br>最后到Typora验证<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348743112-cd05a1ec-2d41-4c67-8e6e-0a84e38da61b.png" alt="image.png"><br>然后就可以在Typora里上传图片，从PicGo传到Github<br>最后右键Git Bash here 进入后输入 <strong>hexo d -g</strong>把文件上传到Github(先上传图最后再 <strong>hexo d -g</strong>)</p>
+
+      
     </div>
-  </div>
-
-  <div class="main-left--block">
-    <ul class="main-left--menu">
-      
-        <li>
-          <a href="/">
-            <span class="header-menu--span">小站首页</span>
-            <i class="header-menu--icon iconfont icon-shouye"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/log">
-            <span class="header-menu--span">个人日志</span>
-            <i class="header-menu--icon iconfont icon-rizhi"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/link">
-            <span class="header-menu--span">友情链接</span>
-            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
-          </a>
-        </li>
-      
-        <li>
-          <a href="/about">
-            <span class="header-menu--span">关于自己</span>
-            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
-          </a>
-        </li>
-      
-    </ul>
-  </div>
-
-  <div class="main-left--block">
-    <div class="main-left--site">
-      <h5 class="main-left--title">
-        <span>站点信息</span>
-        <i class="iconfont icon-zhandian"></i>
-      </h5>
-      <p class="main-left--subtitle">
-        <span>文章数目：</span>
-        <span>4 篇</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>最近动态：</span>
-        <span>今天</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>上线时间：</span>
-        <span>2天</span>
-      </p>
-      <p class="main-left--subtitle">
-        <span>当前版本：</span>
-        <span>v1.0.2</span>
-      </p>
-    </div>
-  </div>
-</div></div>
-      <div id="main-container" class="main-container"><link rel="stylesheet" href="/css/partial/index.css" />
-
-
-
-<div class="index">
-  <div class="index-left">
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="部署图床" />
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/11/30/%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/">部署图床 </a>
-          <div>
-            
-            
-          </div>
-          <div class="bg"></div>
-        </div>
-      </div>
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="笔记" />
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/11/30/%E7%AC%94%E8%AE%B0/">笔记 </a>
-          <div>
-            
-            
-          </div>
-          <div class="bg"></div>
-        </div>
-      </div>
-    
-  </div>
-  <div class="index-center">
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="利用github搭建hexo博客" />
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/11/30/%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">利用github搭建hexo博客 </a>
-          <div>
-            
-            
-          </div>
-          <div class="bg"></div>
-        </div>
-      </div>
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="钓鱼网站" />
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/11/30/%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/">钓鱼网站 </a>
-          <div>
-            
-            
-          </div>
-          <div class="bg"></div>
-        </div>
-      </div>
-    
-  </div>
-  <div class="index-right">
-    <div class="index-right-wrapper">
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/30/%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/" data-id="clpmlvavr0003h4vw40ks19j8" data-title="部署图床" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">2023年11月</a><span class="archive-list-count">4</span></li></ul>
-    </div>
+      
+    </footer>
   </div>
-</div>
+  
+</article>
 
 
-<script>
-  var allImgBoxs = document.querySelectorAll('.index-article--box');
-  var windowHeight = window.innerHeight;
-  var boxs = Array.from(allImgBoxs);
-  var timer = null;
-  boxs.forEach((box, idx) => {
-    if (!window.loadImageSet || !window.loadImageSet.includes(idx)) {
-      box.classList.add('img-loading');
-    } else {
-      const imgDom = box.querySelector('img');
-      imgDom.src = imgDom.dataset.cover;
-    }
-  });
 
-  function scrollFn() {
-    if (timer) {
-      return;
-    }
-    timer = setTimeout(() => {
-      loadImage();
-      timer = null;
-    }, 100)
-  }
-
-  setTimeout(() => {
-    loadImage();
-  }, 100);
-  if (!window.loadedImage) {
-    document.addEventListener('scroll', scrollFn);
-  }
-
-  function loadImage() {
-    const doc = document.documentElement;
-    const scrollTop = doc.scrollTop;
-    if (boxs.every(box => box.loadedImage)) {
-      document.removeEventListener('scroll', scrollFn);
-      window.loadedImage = 1;
-      return;
-    }
-    boxs.forEach((box, idx) => {
-      if (box.loadedImage) {
-        return;
-      }
-      if (box.getBoundingClientRect().top < windowHeight) {
-        const imgDom = box.querySelector('img');
-        imgDom.src = imgDom.dataset.cover;
-        // 图片成功加载
-        imgDom.onload = () => {
-          box.classList.remove('img-loading');
-          box.loadedImage = true;
-          if (!window.loadImageSet) {
-            window.loadImageSet = [];
-          }
-          window.loadImageSet.push(idx);
-        }
-        // 图片加载失败
-        imgDom.onerror = () => {
-          box.classList.remove('img-loading');
-          box.classList.add('img-error');
-          imgDom.src = '/imgs/404.png';
-        }
-      }
-    });
-  }
-</script> </div>
-      <div class="main-right-wrapper"><div class="main-right">
-  <div class="main-right--board">
-    <div class="main-right--title">
-      <h5>公告栏</h5>
-      <i class="iconfont icon-gonggao"></i>
-    </div>
-    <div class="main-right--content">
-      Hello 
-    </div>
-  </div>
-
-  <div id="aplayer" class="main-right--music"></div>
-
-  <div class="operate-items">
-    <div class="operate-item backtop">
-      <i class="iconfont icon-huidaodingbu"></i>
-      <span>回到顶部</span>
-    </div>
-    
-    <div class="operate-item turn-comment hidden">
-      <i class="iconfont icon-pinglun"></i>
-      <span>查看评论</span>
-    </div>
+  
+    <article id="post-利用github搭建hexo博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/30/%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2023-11-30T13:02:56.000Z" itemprop="datePublished">2023-11-30</time>
+</a>
     
   </div>
-
-  <div class="main-right--site">
-    <div class="main-right--power">
-      <p>Power By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>.</p>
-      <p>Theme：<a target="_blank" rel="noopener" href="https://github.com/Aizener/hexo-theme-cola">Cola.</a></p>
-    </div>
-    <p class="main-right--refer"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index">蜀ICP备2022005384号-1</a> </p>
-  </div>
-</div>
-
-<script>
-  function setOperateItem () {
-    const reg = /\d{4}\/\d{2}\/\d{2}\/.+/
-    const path = location.pathname
-    const operateDom = document.querySelector('.main-right .operate-items')
-    const commentDom = document.querySelector('.turn-comment')
-    const cateloguDom = document.querySelector('.article-catelogue > .article-catelogue--wrapper');
-
-    if (commentDom) {
-      if (reg.test(path) || path.match(/\/log\/.+/)) {
-        commentDom.classList.remove('hidden')
-        const newDom = operateDom.cloneNode(true);
-        const _backtopDom = newDom.querySelector('.backtop');
-        const _commentDom = newDom.querySelector('.turn-comment');
-        _backtopDom.addEventListener('click', () => backTopEvent());
-        _commentDom.addEventListener('click', () => commentDomEvent());
-        cateloguDom.appendChild(newDom);
-      } else {
-        commentDom.classList.add('hidden')
-      }
-    }
-  }
-
-  setOperateItem()
-  const musics = JSON.parse(`[{"name":"安河桥","artist":"宋冬野","url":"http://ting6.yymp3.net:82/new25/songdongye/11.mp3","cover":"https://img2.baidu.com/it/u=1260056724,1076343118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"卡布达","artist":"暂无","url":"/music/kabuda.mp3","cover":"https://img2.baidu.com/it/u=705831265,2862720033&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"}]`)
-  const ap = new APlayer({
-    container: document.querySelector('#aplayer'),
-    audio: musics,
-  })
-
-  $(document).on('pjax:complete', function() {
-    setOperateItem()
-  })
-
-  document.querySelector('.backtop').addEventListener('click', () => {
-    backTopEvent();
-  })
-  const dom = document.querySelector('.turn-comment')
-  dom && dom.addEventListener('click', () => {
-    commentDomEvent();
-  })
-
-  function backTopEvent() {
-    document.documentElement.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
-
-  function commentDomEvent() {
-    const commentDom = document.querySelector('.comments-intro')
-    if (!commentDom) return
-    const top = commentDom.offsetTop, height = commentDom.offsetHeight
-    document.documentElement.scrollTo({
-      top: top - 2 * height,
-      behavior: 'smooth'
-    })
-  }
-</script></div>
-    </section>
-  </div>
-  <div id="progress" class="progress"></div>
-  <div id="gray" class="gray"></div>
-
-  <script>
-    function initScroll () {
-      document.addEventListener('scroll', () => {
-        const doc = document.documentElement
-        const scrollTop = doc.scrollTop
-        const pageHeight = doc.offsetHeight
-        const clientHeight = doc.clientHeight
-        const ratio = scrollTop / (pageHeight - clientHeight)
-        const progress = document.querySelector('#progress')
-        const avatarImg = document.querySelector('.main-left--avatar')
-        progress.style.width = (100 * ratio) + '%'
-        avatarImg.style.transform = `rotate(${360 * ratio}deg)`
-      })
-    }
-
-    const rootPath = "/"
-
-    const checkAndSetArticlePageLayout = () => {
-      const path = location.pathname.replace(rootPath, '');
-      if (
-        /^\/?\d{4}\/\d{2}\/\d{2}\/.*/.test(path) ||
-        /^log\/.+/.test(path)
-      ) {
-        $('.main-container, .main-right, .main-right-wrapper').addClass('is-article')
-      } else {
-        $('.main-container, .main-right, .main-right-wrapper').removeClass('is-article')
-      }
-    }
-
-    const gray = "none"
-    const setGrayStyle = () => {
-      if (gray === 'none') {
-        return
-      } else if (gray === 'index') {
-        location.pathname === '/' ? $('#gray').show() : $('#gray').hide()
-      } else if (gray === 'all') {
-        $('#gray').show()
-      }
-    }
-    setGrayStyle()
-
-
-    window.onload = function () {
-      checkAndSetArticlePageLayout()
-      setTimeout(() => {
-        $('#load').slideUp()
-        $('#container').slideToggle()
-        setTimeout(() => {
-          initScroll();
-        }, 500)
-      }, 500)
-    }
+  <div class="article-inner">
     
-    let status = 0
-    // 对所有链接跳转事件绑定pjax容器container
-    $(document).pjax('a[target!=_blank]', '#main-container', {
-      container: '#main-container',
-      fragment: '#main-container',
-      timeout: 8000
-    })
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/11/30/%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">利用github搭建hexo博客</a>
+    </h1>
+  
 
-    $(document).on('pjax:start', function() {
-    })
-    $(document).on('pjax:complete', function() {
-      status = 0
-      $('.main-container').addClass('to-up').on('animationend', function() {
-        $(this).removeClass('to-up')
-      })
-      setGrayStyle()
-      checkAndSetArticlePageLayout()
-    })
-    $(document).on('pjax:popstate', function() {
-      status = -1
-      checkAndSetArticlePageLayout()
-    });
-  </script>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>1.前提</strong></p>
+<ol>
+<li>提前安装好(node.js)<a target="_blank" rel="noopener" href="https://nodejs.org/en]">[https://nodejs.org/en]</a> 左边的那个</li>
+<li>提前安装好(GIt)<a target="_blank" rel="noopener" href="https://git-scm.com/downloads]">[https://git-scm.com/downloads]</a>  </li>
+<li>提前注册好一个github账号</li>
+<li>如果文章图片没有显示，请自行挂代理</li>
+</ol>
+<p><strong>2.操作步骤</strong></p>
+<ol>
+<li>在本地找个目录放博客源文件，路径不要有中文</li>
+<li>在选定的目录中，cmd进入<img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701344436825-bd01f240-04a1-44c1-b6c4-edea9648deb9.png" alt="image.png"></li>
+<li>使用npm命令安装Hexo，输入：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>构建好的效果：<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701343373505-68ba8c5d-a1f2-4398-a522-ab1bdff58163.png" alt="image.png"><br>为了检测我们的网站雏形，分别按顺序输入以下三条命令：(cmd以下目录)<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701344515705-18afe2ac-07e0-4e0c-a947-ff363482f683.png" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line"><span class="comment">#之后就可以访问127.0.0.1:4000访问blog了</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3.配置ssh</strong><br>cd ~&#x2F;.ssh #检查本机已存在的ssh密钥<br>如果提示：No such file or directory 说明你是第一次使用git。<br>ssh-keygen -t rsa -C “邮件地址”<br>然后连续3次回车，最终会生成一个文件在用户目录下，<strong>打开用户目录</strong>，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701344780077-cc050588-305e-494a-8d6a-0da60d7b18dd.png" alt="image.png"><br>key填写C:\Users\Administrator.ssh\id_rsa.pub中的内容<br>然后尝试ssh连接,测试是否成功<br>ssh -T <a href="mailto:git@github.com">git@github.com</a> # 注意邮箱地址不用改<br>如果提示Are you sure you want to continue connecting (yes&#x2F;no)?，输入yes，然后会看到下面这个，就算成功：<br>Hi liuxianan! You’ve successfully authenticated, but GitHub does not provide shell access.<br>在选中的位置(blog目录下)打开cmd(以管理员身份)<br>npm install hexo-deployer-git –save<br>继续配置<br>git config –global user.name “luozhixiaowo”&#x2F;&#x2F; 你的github用户名，非昵称<br>git config –global user.email “<a href="mailto:xxx@qq.com">xxx@qq.com</a>“&#x2F;&#x2F; 填写你的github注册邮箱<br><strong>4.准备上传代码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:luozhixiaowo/luozhixiaowo.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+
+<p>在blog找到_config.yml</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701350011565-36402859-9018-45b9-975a-c9280b4d7e97.png" alt="img"></p>
+<p>注意保持格式，缩进不对，会导致一会儿，上传不成功<br>最后上传<br><strong>hexo d</strong><br>每次上传成功之后，需要等待1-3分钟，用来刷新页面<br>类似这样的就代表成功<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701345278608-4713a5c4-6d94-426f-985b-3dd8b3ed65ea.png" alt="image.png"><br><strong>5.hexo命令介绍</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;我的博客&quot;</span> == hexo new <span class="string">&quot;我的博客&quot;</span> <span class="comment">#新建文章，new后面可以是中文，不用加引号</span></span><br><span class="line">hexo new page <span class="string">&quot;pageName&quot;</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo g == hexo generate <span class="comment">#生成</span></span><br><span class="line">hexo s == hexo server <span class="comment">#启动服务预览</span></span><br><span class="line">hexo d == hexo deploy <span class="comment">#部署</span></span><br><span class="line"></span><br><span class="line">hexo server <span class="comment">#Hexo会监视文件变动并自动更新，无须重启服务器</span></span><br><span class="line">hexo server -s <span class="comment">#静态模式</span></span><br><span class="line">hexo server -p <span class="number">5000</span> <span class="comment">#更改端口</span></span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="comment">#自定义 IP</span></span><br><span class="line">hexo clean <span class="comment">#清除缓存，若是网页正常情况下可以忽略这条命令</span></span><br><span class="line">hexo version <span class="comment">#查看Hexo的版本</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line"></span><br><span class="line">hexo s -g <span class="comment">#生成并本地预览</span></span><br><span class="line">hexo d -g <span class="comment">#生成并上传（重点）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>6.hexo目录结构</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+– .deploy <span class="comment">#hexo deploy生成的文件</span></span><br><span class="line">+– node_modules <span class="comment">#npm组件</span></span><br><span class="line">+– public <span class="comment">#生成的静态网页文件</span></span><br><span class="line">+–scaffolds <span class="comment">#模板</span></span><br><span class="line">+– source <span class="comment">#博客正文和其他源文件</span></span><br><span class="line">| +– _posts <span class="comment">#我们自己写的文章以md结尾</span></span><br><span class="line">+– themes <span class="comment">#主题</span></span><br><span class="line">+– _config.yml <span class="comment">#全局配置文件</span></span><br><span class="line">– package.json <span class="comment">#定义了hexo所需要的各种模块</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/30/%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" data-id="clpmlvavo0001h4vw54kr9wc5" data-title="利用github搭建hexo博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/30/%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2023-11-30T09:09:59.000Z" itemprop="datePublished">2023-11-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/11/30/%E7%AC%94%E8%AE%B0/">笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>1.python环境配置</strong><br><a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83/python-3.12.0a1-amd64.exe">python下载链接</a><br>python pip命令要关掉应用执行别名的与python相关的<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701170047077-18665d8d-b09d-49e0-9e8e-6b3c38d334a1.png" alt="image.png"><br>再cmd物理机，输入python<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701170269248-a3e0d6ab-111f-4b51-a972-87ea17699353.png" alt="image.png"><br>使用pip命令<br>用永恒之黑(蓝?)攻击虚拟机：python 脚本名.py 目标ip<br>python CVE-2020-0796.py 192.168.<br>但是缺少模块需要下载，用以下命令：<br>pip3 install   xxxxx -i <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a> –trusted-host mirrors.aliyun.com<br>pip命令执行不了可以用绝对路径执行F:\env\python3.12\Scripts\pip3 install   xxxxx（没有的，需要下的模组）（-i <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a> –trusted-host mirrors.aliyun.com加速模组下载）</p>
+<p><strong>2.钓鱼页面（工具）</strong><br>先需要下载VMware，下载kali，kali用root登录<br>vim &#x2F;etc&#x2F;proxychains4.conf（socks4改成5，把ip和端口改成clash代理的）<br>proxychains4 git clone <a target="_blank" rel="noopener" href="https://github.com/makdosx/mip22">https://github.com/makdosx/mip22</a>     ls（查看mip22在不在）<br>cd mip22<br>chmod +x .&#x2F;*<br>proxychains4 -q bash .&#x2F;mip22.sh ( 选1  然后在69个里面选一个，最后选3，获得钓鱼的链接（复制https的）)</p>
+<p><strong>3.vscode</strong><br><a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/VSCodeUserSetup-x64-1.85.0-insider%20(1).exe">VSCode链接</a><br>在扩展中搜索安装Chinese扩展，python扩展；搜索ai，安装Github，TabNine扩展；搜索run安装Code Runner扩展<br>写python代码<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701172373350-3cdea9bd-eceb-40c7-b112-117a5812bae5.png" alt="image.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">url = <span class="string">&quot;https://httpbin.org/get&quot;</span></span><br><span class="line">r = requests.get(url)</span><br><span class="line"><span class="built_in">print</span>(r.status_code)</span><br></pre></td></tr></table></figure>
+
+<p>运行不了，要在终端下载没有的模块<br>pip install requests -i <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a> –trusted-host mirrors.aliyun.com<br>pip install chardet -i <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a> –trusted-host mirrors.aliyun.com</p>
+<p><strong>4.远控</strong><br><a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/windows%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/DHLv9.5.zip"><strong>大灰狼DHLv9.5链接</strong></a><br>系统设置看到监听端口，输入物理机(访问)的ip，生成服务，获得server，把server放到虚拟机中运行，<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701173318553-ed66e3d5-2cdb-466d-af1b-48fe7e549871.png" alt="a6a25bbe1b9dc62a8c9a499e87b8f47.png"><br><strong>如上就可以开始远控。</strong><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701222653556-5aba18fd-baa8-42a1-b688-f473be4122ab.png" alt="img"></p>
+<p><a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E8%BF%9C%E6%8E%A7/windows%E7%97%85%E6%AF%92%E7%9B%91%E5%90%AC/Quasar%E6%9C%80%E6%96%B0%E5%86%85%E9%83%A8%E6%88%90%E5%91%98%E6%B1%89%E5%8C%96%E7%89%88%E8%BF%9C%E6%8E%A7%E5%B7%A5%E5%85%B7.rar">Quasar远控工具链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/30/%E7%AC%94%E8%AE%B0/" data-id="clpmlvavu0005h4vwcppf9jq5" data-title="笔记" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-钓鱼网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/30/%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/" class="article-date">
+  <time class="dt-published" datetime="2023-11-30T06:43:51.000Z" itemprop="datePublished">2023-11-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/11/30/%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/">钓鱼网站</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://192.168.2.6:5244/d/%E7%BD%91%E7%9B%98/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98/%E8%BD%AF%E4%BB%B6%E5%A4%A7%E5%85%A8/phpstudy_x64_8.1.1.2.exe">小皮phpstudy_x64_8.1.1.2.exe下载</a><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701258800759-3839d3af-6929-4ea7-ac80-1467b69a791e.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701258876866-f2eddd2b-481b-4ba0-8504-e31c18be96cc.png" alt="image.png"><br>把要运行的放在根目录里面<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701258961326-707d4b59-fc81-4572-9ba9-0b74f38cb6d0.png" alt="image.png"><br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/html/40675928/1701258194513-37d63226-9be5-4e55-ba24-fc5f2287fcf8.html?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/html/40675928/1701258194513-37d63226-9be5-4e55-ba24-fc5f2287fcf8.html%22,%22name%22:%22index.html%22,%22size%22:275,%22ext%22:%22html%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22ufdb05535-cd9f-47c4-b02d-86a38846fa6%22,%22taskType%22:%22upload%22,%22type%22:%22text/html%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22u2ca4d599%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">index.html</a>加入 <script src="./flash.js"></script>连接flash.js脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;en&quot;</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">&quot;viewport&quot;</span> content=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;./flash.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;h1&gt;Hello world&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/js/40675928/1701238727560-2eb70e9f-d84b-4783-86e2-8121f7486e47.js?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/js/40675928/1701238727560-2eb70e9f-d84b-4783-86e2-8121f7486e47.js%22,%22name%22:%22flash.js%22,%22size%22:53673,%22ext%22:%22js%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u00263279-dc69-438b-b266-babe66d805b%22,%22taskType%22:%22upload%22,%22type%22:%22text/javascript%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22u23f0289c%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">flash.js</a><br>木马<img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701258617919-ed0db3c9-7e78-43e3-8e41-86ed1c6113f6.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701259229729-9e2b97b9-74f9-47dd-bcbc-1d80cab05e79.png" alt="image.png"><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701259256930-09fd6e31-5cbe-4a46-a003-8bb17f15770b.png" alt="image.png"><br>改为对应IP地址和.exe文件<br><a target="_blank" rel="noopener" href="http://192.168.176.128/SteamSetup.exe">http://192.168.176.128/</a>flashcenter_pp_ax_install_cn.exe<br><a target="_blank" rel="noopener" href="http://192.168.176.128/SteamSetup.exe">http://192.168.176.128/SteamSetup.exe</a><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701259620051-374b195d-0d4c-4f0d-a230-9e1828b4588e.png" alt="789fe6bbd464908cf10a3cdae2a6887.png"></p>
+<p>结合flash.exe木马与flashcenter_pp_ax_install_cn.exe安装包，合在一起造一个带木马的安装包伪装成正常安装包<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701260080339-9faec692-4846-4808-850c-eb16656795f2.png" alt="image.png"><br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/pdf/40675928/1701260126363-1e7cfb86-bbf1-4b9c-a22e-f20d4b6f397b.pdf?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/pdf/40675928/1701260126363-1e7cfb86-bbf1-4b9c-a22e-f20d4b6f397b.pdf%22,%22name%22:%22flash%E9%92%93%E9%B1%BC.pdf%22,%22size%22:233808,%22ext%22:%22pdf%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u2fafb20a-f471-4f8d-9f27-8d493f89558%22,%22taskType%22:%22upload%22,%22type%22:%22application/pdf%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22u9f92a676%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">flash钓鱼.pdf</a>合在一起的步骤<br>然后用Restorator把图标换掉，把生成的含病毒的文件放到跟目录<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701259918189-0ced2c74-7e37-4a90-aaf5-3227ec68ef74.png" alt="image.png"><br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/rar/40675928/1701259081332-62930495-6461-4423-85b1-065e27d07aee.rar">Restorator(1).rar</a></p>
+<p>steam钓鱼<br>获得链接，进入网站，另存页面到桌面，然后复制到win10hei（小皮所在虚拟机）<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701264605320-569575b5-7dc8-4586-a8c6-e37c0331491b.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701264678350-cbd7bc0d-543f-49fa-81ea-5f4d9d445f0c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701264839817-4481ef35-b80b-4277-89d4-67a6e1cbfc05.png" alt="image.png"><br>把Sign In.html改为index.html，把安装按钮的html改成自己伪造的<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701265047602-9b0a2d79-d9c6-4fea-987f-35b463113efe.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701264976498-671b1d2c-619f-4f7f-888c-f75443740333.png" alt="image.png"><br>进入页面，点击安装按钮<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701265246470-a468e7b5-350f-4e78-a63d-d3ee351111fe.png" alt="image.png"><br>也可以仿照flash.js和flashcenter_pp_ax_install_cn.exe弄一个steam升级窗口，点击后出现安装包和木马。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/11/30/%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/" data-id="clpmlvavv0007h4vw0wylhwy7" data-title="钓鱼网站" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/30/%E9%83%A8%E7%BD%B2%E5%9B%BE%E5%BA%8A/">部署图床</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/30/%E5%88%A9%E7%94%A8github%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">利用github搭建hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/30/%E7%AC%94%E8%AE%B0/">笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/30/%E9%92%93%E9%B1%BC%E7%BD%91%E7%AB%99/">钓鱼网站</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
 </body>
 </html>
