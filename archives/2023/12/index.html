@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——部署图床 | Hexo</title>
+  <title>我的技术与生活——小站首页 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——部署图床`
+    document.title = `我的技术与生活——小站首页`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -337,124 +337,111 @@
     </div>
   </div>
 </div></div>
-      <div id="main-container" class="main-container">
+      <div id="main-container" class="main-container"><link rel="stylesheet" href="/css/partial/archive.css" />
 
 
-  <link rel="stylesheet" href="/css/partial/article.css" />
 
-<div class="article-container">
-  <div class="article">
-    <h1 class="article-title">部署图床</h1>
-    <div class="article-info">
-      <div class="article-info--item">
-        <div class="article-info--info">
-          
-          <div class="article-info--categories">
-            <span>分类：</span>
-            
-          </div>
-          
-          
-          <div class="article-info--tags">
-            <span>标签：</span>
-            
-          </div>
-          
-          <p class="article-info--date">日期：2023-11-30 21:03:24</p>
-        </div>
-        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
-      </div>
-    </div>
-    <article class="article-content markdown-body">
-      <p><strong>1.介绍与前提</strong><br>1.接着上一篇搭建博客的文章<br>2.typora是一个Markdown格式的编辑器<br>3.PicGo是一个自动上传图片到图床的工具<br>下载并安装<a target="_blank" rel="noopener" href="https://picgo-release.molunerfinn.com/2.4.0-beta.6/PicGo-Setup-2.4.0-beta.6-x64.exe">PicGo</a><br>下载正版<a target="_blank" rel="noopener" href="https://typoraio.cn/">Typora</a><br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/zip/40675928/1701346463815-886b8cd5-a2c5-4b16-90bd-a90c15d83d82.zip?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2023/zip/40675928/1701346463815-886b8cd5-a2c5-4b16-90bd-a90c15d83d82.zip%22,%22name%22:%22typora%E6%9B%BF%E6%8D%A2%E6%96%87%E4%BB%B6.zip%22,%22size%22:71320370,%22ext%22:%22zip%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22ub5b3738a-badc-4eda-95fc-2b000c93f20%22,%22taskType%22:%22upload%22,%22type%22:%22application/x-zip-compressed%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22s6kAr%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">typora替换文件.zip</a><br>复制替换文件到Typora的resources中进行替换<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701346912573-3d9cd459-b5c1-480d-ad6f-9a02ae745a7c.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347017956-f021011c-c87f-44e9-b66c-324e3aeedc81.png" alt="image.png"><br>替换好了之后把邮箱和序列号输入到正版Typora中激活就可以用了<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347195179-e606e0f3-cf65-400c-bec6-3c8da6e0d624.png" alt="image.png"><br><strong>2.搭建</strong><br><strong>思路：</strong></p>
-<ol>
-<li>ypora向本地的36677端口发送图片上传的请求</li>
-<li>PicGo默认监听本地36677端口，并将监听的数据以接口的形式发送到，指定Lskypro所在的图床，返回一个链接</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701346288681-0445e883-cea4-44bd-b670-d824a0d74bb4.png" alt="cbb396354ac291802a111adb1de18f1.png"><br>开始搭建<br>typora-偏好设置（点击文件找到偏好设置）<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347426852-a3e47e44-d93d-4b73-b83f-436e4844e5be.png" alt="image.png"><br>PicGo路径要找准精确到PicGo.exe<br>新建一个存储库，用来当图库，并在用户设置里获得token<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347618647-f0ddf911-bd81-4837-b1f3-64e841639364.png" alt="image.png"></p>
-<p>点击用户设置最下面的&lt;&gt;Developer settings，然后按图操作<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348180756-4b95e308-3ad6-4a5c-8906-e304858edaac.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348316663-2dc1f238-085c-497f-bee6-7bec85a5d99c.png" alt="image.png"><br>note名随便写一个，Select scopes选项前3个都选上也行。<br>然后复制token<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348530873-6945db63-82f5-4a05-a589-f5db2289a745.png" alt="image.png"><br>然后到PicGo的图床设置里把token复制进去<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347543450-7f1c7155-0564-4a7e-83aa-fa1694ecf991.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701347570756-9e73804d-bd46-4fa1-bbb9-7f808fd066a5.png" alt="image.png"><br>最后到Typora验证<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701348743112-cd05a1ec-2d41-4c67-8e6e-0a84e38da61b.png" alt="image.png"><br>然后就可以在Typora里上传图片，从PicGo传到Github<br>最后右键Git Bash here 进入后输入 <strong>hexo d -g</strong>把文件上传到Github(先上传图最后再 <strong>hexo d -g</strong>)</p>
+    <link rel="stylesheet" href="/css/partial/index.css" />
 
-    </article>
+
+
+<div class="index">
+  <div class="index-left">
     
-    <div class="read-nums">
-      <!-- id 将作为查询条件 -->
-      <span id="2023/11/30/部署图床/" class="leancloud_visitors" data-flag-title="Your Article Title">
-        <em class="post-meta-item-text">浏览量</em>
-        <i class="leancloud-visitors-count"></i>
-      </span>
-    </div>
-    <div class="comments-intro">
-      <h2>评论区</h2>
-      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
-    </div>
-    <div id="vcomments" class="vcomments"></div>
+      <div class="index-article">
+        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
+        <div class="index-article--box">
+          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="Linux基本命令与ssh远程登录" />
+        </div>
+        <div class="index-article--content">
+          <a href="/2023/12/10/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E4%B8%8Essh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95/">Linux基本命令与ssh远程登录 </a>
+          <div>
+            
+            
+          </div>
+          <div class="bg"></div>
+        </div>
+      </div>
     
   </div>
-  <div class="article-catelogue">
-    <div class="article-catelogue--wrapper">
-      <div class="catelogue catelogue-1">
-        <h3>目录</h3>
-        
-      </div>
+  <div class="index-center">
+    
+  </div>
+  <div class="index-right">
+    <div class="index-right-wrapper">
       
-        <div class="catelogue catelogue-2">
-          
-            <p>
-              <span>上一篇：</span>
-              <a href="/2023/12/10/Linux基本命令与ssh远程登录/">Linux基本命令与ssh远程登录</a>
-            </p>
-           
-          
-            <p>
-              <span>下一篇</span>
-              <a href="/2023/11/30/利用github搭建hexo博客/">利用github搭建hexo博客</a>
-            </p>
-          
-        </div>
       
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">2023年12月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">2023年11月</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 </div>
 
 
 <script>
-  // var定义，避免pjax重新进来造成的重复声明错误
-  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
-  new Valine({
-    el: '#vcomments',
-    appId: config.appId,
-    appKey: config.appKey,
-    placeholder: config.placeholder,
-    meta: config.meta,
-    recordIP: config.recordIP,
-    visitor: config.visitor,
-    enableQQ: config.enableQQ,
-    path: '2023/11/30/部署图床/'
-  })
-</script>
+  var allImgBoxs = document.querySelectorAll('.index-article--box');
+  var windowHeight = window.innerHeight;
+  var boxs = Array.from(allImgBoxs);
+  var timer = null;
+  boxs.forEach((box, idx) => {
+    if (!window.loadImageSet || !window.loadImageSet.includes(idx)) {
+      box.classList.add('img-loading');
+    } else {
+      const imgDom = box.querySelector('img');
+      imgDom.src = imgDom.dataset.cover;
+    }
+  });
 
+  function scrollFn() {
+    if (timer) {
+      return;
+    }
+    timer = setTimeout(() => {
+      loadImage();
+      timer = null;
+    }, 100)
+  }
 
-<script>
-  $(document).on('pjax:complete', function() {
-    const tocs = document.querySelector('.toc')
-    const links = tocs ? tocs.querySelectorAll('a') : []
-    links.forEach(link => {
-      link.addEventListener('click', e => {
-        const href = decodeURIComponent(e.href)
-        href.search(/#(.*)/)
-        const id = RegExp.$1
-        const target = document.querySelector('#' + id)
-        const top = target.offsetTop
-        document.documentElement.scrollTo({
-          top: top - 100,
-          behavior: 'smooth'
-        })
-        e.preventDefault()
-      })
-    })
-  })
+  setTimeout(() => {
+    loadImage();
+  }, 100);
+  if (!window.loadedImage) {
+    document.addEventListener('scroll', scrollFn);
+  }
+
+  function loadImage() {
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop;
+    if (boxs.every(box => box.loadedImage)) {
+      document.removeEventListener('scroll', scrollFn);
+      window.loadedImage = 1;
+      return;
+    }
+    boxs.forEach((box, idx) => {
+      if (box.loadedImage) {
+        return;
+      }
+      if (box.getBoundingClientRect().top < windowHeight) {
+        const imgDom = box.querySelector('img');
+        imgDom.src = imgDom.dataset.cover;
+        // 图片成功加载
+        imgDom.onload = () => {
+          box.classList.remove('img-loading');
+          box.loadedImage = true;
+          if (!window.loadImageSet) {
+            window.loadImageSet = [];
+          }
+          window.loadImageSet.push(idx);
+        }
+        // 图片加载失败
+        imgDom.onerror = () => {
+          box.classList.remove('img-loading');
+          box.classList.add('img-error');
+          imgDom.src = '/imgs/404.png';
+        }
+      }
+    });
+  }
 </script> 
-
 </div>
       <div class="main-right-wrapper"><div class="main-right">
   <div class="main-right--board">
