@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>我的技术与生活——python语法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/public.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/iconfont.css" />
+  <link rel="stylesheet" href="/css/APlayer.min.css" />
+  <script src="/js/APlayer.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/jquery.pjax.min.js"></script>
+
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <script>
+    document.title = `我的技术与生活——python语法`
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<style>
+  .load {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(37, 35, 40);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+  }
+  .load-circle {
+    width: 80px;
+    height: 80px;
+    border: 8px solid orange;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 1s linear infinite;
+    filter: drop-shadow(0 0 3px orange);
+  }
+  .load-circle-inner {
+    width: 40px;
+    height: 40px;
+    border: 8px solid orange;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: rotate-reverse .5s linear infinite;
+  }
+  .load-text {
+    margin-top: 20px;
+    font-size: 24px;
+    color: orange;
+    display: flex;
+  }
+  .load-text span {
+    margin: 0 5px;
+    text-shadow: 5px 5px 5px orange;
+    animation: move 1s linear infinite;
+  }
+  .load-text span:nth-child(1) {
+    animation-delay: -0.6s;
+  }
+  .load-text span:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+  .load-text span:nth-child(3) {
+    animation-delay: -0.4s;
+  }
+  .load-text span:nth-child(4) {
+    animation-delay: -0.3s;
+  }
+  .load-text span:nth-child(5) {
+    animation-delay: -0.2s;
+  }
+  .load-text span:nth-child(6) {
+    animation-delay: -0.1s;
+  }
+  @keyframes rotate {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes rotate-reverse {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(-360deg); }
+  }
+  @keyframes move {
+    0% { transform: translateY(0%) rotate(0) scale(1); }
+    20% { transform: translateY(20%) rotate(10deg) scale(1.2); }
+    80% { transform: translateY(-10%) rotate(-20deg) scale(.8);}
+    100% { transform: translateY(0) rotate(0) scale(1); }
+  }
+
+  .progress {
+    position: fixed;
+    left: 0; top: 0;
+    width: 0;
+    height: 3px;
+    background-color: green;
+    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .1s;
+    z-index: 9999;
+  }
+
+  .to-up {
+    animation: toUp .5s 1;
+  }
+  .gray {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    display: none;
+    pointer-events: none;
+    background-color: #000;
+    mix-blend-mode: color;
+  }
+  @keyframes toUp {
+    from { transform: translateY(15px); opacity: 0; }
+    to { transform: translateY(0) ; opacity: 1; }
+  }
+</style>
+<body>
+  <div id="load" class="load">
+    <div class="load-circle">
+      <div class="load-circle-inner"></div>
+    </div>
+    <p class="load-text">
+      <span>L</span>
+      <span>O</span>
+      <span>A</span>
+      <span>D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
+    </p>
+  </div>
+  <div id="container" class="container w-100 vh-100" style="display: none;">
+    <header class="header">
+  <div class="header-wrapper">
+    <div class="header-left">
+      <div class="header-search">
+        <input id="search-input" type="text" class="header-search--input" placeholder="请输入要检索的文章标题" />
+        <span id="search-btn" class="header-search--icon"><i class="iconfont icon-sousuo"></i></span>
+      </div>
+      <div id="search-layer" class="header-search--layer hidden">
+        <p class="title">
+          <span>以下是搜索内容：</span>
+          <span id="close-layer-btn">关闭</span>
+        </p>
+        <ul>
+        </ul>
+      </div>
+    </div>
+    <div class="header-right">
+      <ul class="header-menu">
+        <li>
+          <a href="http://example.com/">
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+            <span class="header-menu--span">首页</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://example.com/log">
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+            <span class="header-menu--span">日志</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://example.com/link">
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+            <span class="header-menu--span">友情链接</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://example.com/about">
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+            <span class="header-menu--span">关于我</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const ipt = document.querySelector('#search-input')
+  const btn = document.querySelector('#search-btn')
+  const layer = document.querySelector('#search-layer')
+  const posts = JSON.parse(`[{"title":"Linux基本命令与ssh远程登录","path":"2023/12/10/Linux基本命令与ssh远程登录/"},{"title":"html","path":"2023/12/10/html/"},{"title":"python语法","path":"2023/12/10/python语法/"},{"title":"利用github搭建hexo博客","path":"2023/11/30/利用github搭建hexo博客/"},{"title":"笔记","path":"2023/11/30/笔记/"},{"title":"安卓病毒监听","path":"2023/12/10/安卓病毒监听/"},{"title":"网络基础","path":"2023/12/10/网络基础/"},{"title":"部署图床","path":"2023/11/30/部署图床/"},{"title":"钓鱼网站","path":"2023/11/30/钓鱼网站/"}]`)
+  ipt.addEventListener('keyup', e => {
+    if (e.key === 'Enter') {
+      handleSearch()
+    }
+  })
+  btn.addEventListener('click', () => {
+    handleSearch()
+  })
+
+  document.querySelector('#close-layer-btn').addEventListener('click', () => {
+    layer.classList.toggle('hidden')
+  })
+
+  function handleSearch() {
+    if (ipt.value.trim() === '') {
+      return
+    }
+    let html = ''
+    const targetPosts = posts.filter(post => post.title.includes(ipt.value))
+    targetPosts.forEach(post => {
+      html += `
+        <li>
+          <div>
+            <a href="/${post.path}">${post.title.replace(new RegExp(ipt.value), `<span>${ipt.value}</span>`)}</a>
+          </div>
+          <img src="${post.cover || '/imgs/default-cover.webp' }" />
+        </li>
+      `
+    })
+    if (html.trim () === '') {
+      html += '<p class="empty">没有搜索到内容</p>'
+    }
+    layer.querySelector('ul').innerHTML = html
+    layer.classList.remove('hidden')
+  }
+</script> 
+    <section id="main" class="main">
+      <div class="main-left-wrapper">
+<div class="main-left">
+  <div class="main-left--block">
+    <div class="main-left--info">
+      <img src="/imgs/avatar.jpg"" class="main-left--avatar" />
+      <div class="main-left--intro">
+        <p class="main-left--name">xiao.</p>
+        <div class="main-left--tags">
+          <span class="main-left--tag">学习</span>
+          <span class="main-left--tag">摸鱼</span>
+        </div>
+      </div>
+    </div>
+  
+    <div>
+      <div class="main-left--motto">
+        <p>“天下莫弱于水，而攻坚者莫之能胜，”</p>
+        <p>“上善若水。”</p>
+      </div>
+      <div class="main-left--github">
+        <span class="line"></span>
+        <a target="_blank" rel="noopener" href="https://github.com/Aizener"><i class="logo iconfont icon-github-fill"></i></a>
+        <span class="line"></span>
+      </div>
+      <div class="main-left--statics">
+        <a href="/categories">
+          <div>
+            <span>0</span>
+            <span>分类</span>
+          </div>
+        </a>
+        <a href="/tags">
+          <div>
+            <span>0</span>
+            <span>标签</span>
+          </div>
+        </a>
+        <a href="/archives">
+          <div>
+            <span>2 </span>
+            <span>归档</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-left--block">
+    <ul class="main-left--menu">
+      
+        <li>
+          <a href="/">
+            <span class="header-menu--span">小站首页</span>
+            <i class="header-menu--icon iconfont icon-shouye"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/log">
+            <span class="header-menu--span">个人日志</span>
+            <i class="header-menu--icon iconfont icon-rizhi"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/link">
+            <span class="header-menu--span">友情链接</span>
+            <i class="header-menu--icon iconfont icon-youqinglianjie"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a href="/about">
+            <span class="header-menu--span">关于自己</span>
+            <i class="header-menu--icon iconfont icon-guanyuwomen"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+  <div class="main-left--block">
+    <div class="main-left--site">
+      <h5 class="main-left--title">
+        <span>站点信息</span>
+        <i class="iconfont icon-zhandian"></i>
+      </h5>
+      <p class="main-left--subtitle">
+        <span>文章数目：</span>
+        <span>9 篇</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>最近动态：</span>
+        <span>今天</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>上线时间：</span>
+        <span>11天</span>
+      </p>
+      <p class="main-left--subtitle">
+        <span>当前版本：</span>
+        <span>v1.0.2</span>
+      </p>
+    </div>
+  </div>
+</div></div>
+      <div id="main-container" class="main-container">
+
+
+  <link rel="stylesheet" href="/css/partial/article.css" />
+
+<div class="article-container">
+  <div class="article">
+    <h1 class="article-title">python语法</h1>
+    <div class="article-info">
+      <div class="article-info--item">
+        <div class="article-info--info">
+          
+          <div class="article-info--categories">
+            <span>分类：</span>
+            
+          </div>
+          
+          
+          <div class="article-info--tags">
+            <span>标签：</span>
+            
+          </div>
+          
+          <p class="article-info--date">日期：2023-12-10 09:17:03</p>
+        </div>
+        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
+      </div>
+    </div>
+    <article class="article-content markdown-body">
+      <p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701694547707-559ff68b-0cc6-46fe-b097-a16d6f926086.png" alt="image.png"><br>1.字符串的格式化问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.字符串的格式化问题</span></span><br><span class="line"><span class="comment">#我叫xxx,我住在xxxx,我今年xx岁，我喜欢做xxxxx </span></span><br><span class="line">name = <span class="built_in">input</span>(<span class="string">&quot;请输入你的名字：&quot;</span>)</span><br><span class="line">address = <span class="built_in">input</span>(<span class="string">&quot;请输入你的住址：&quot;</span>)</span><br><span class="line">age = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>))</span><br><span class="line">hobby = <span class="built_in">input</span>(<span class="string">&quot;请输入你的爱好：&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#s字符串占位</span></span><br><span class="line"><span class="comment">#d占位整数</span></span><br><span class="line"><span class="comment">#占位小数</span></span><br><span class="line">s = <span class="string">&quot;我叫%s, 我住在%s, 我今年%d岁, 我喜欢%s&quot;</span> % (name,address,age,hobby)</span><br><span class="line">s0 = <span class="string">&quot;我叫%s&quot;</span> % name</span><br><span class="line"><span class="built_in">print</span>(s0)</span><br><span class="line">s1 = <span class="string">&quot;我叫&#123;&#125;,我住在&#123;&#125;,我今年&#123;&#125;岁，我喜欢&#123;&#125;&quot;</span>.<span class="built_in">format</span>(name,address,aqe,hobby)</span><br><span class="line">s2 = <span class="string">f&quot;我叫<span class="subst">&#123;name&#125;</span>,我叫<span class="subst">&#123;name&#125;</span>,我叫<span class="subst">&#123;name&#125;</span>,我叫<span class="subst">&#123;name&#125;</span>,我今年<span class="subst">&#123;age&#125;</span>岁，我叫<span class="subst">&#123;name&#125;</span>,我叫<span class="subst">&#123;name&#125;</span>&quot;</span> </span><br><span class="line"><span class="comment">#f-string命令（python3.5），用f可以不用按顺序，可以随意更改</span></span><br><span class="line"><span class="built_in">print</span>(s2)</span><br></pre></td></tr></table></figure>
+
+<p>2.索引和切片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#索引:按照位置提取元素 </span></span><br><span class="line"><span class="comment">#s =“我叫周杰伦&quot;</span></span><br><span class="line"><span class="comment">#可以采用索引的方式来提取某一个字符(文字)</span></span><br><span class="line"><span class="comment"># print(s[3])    #程序员都是从0开始数数</span></span><br><span class="line"><span class="comment"># print(s[0])</span></span><br><span class="line"><span class="comment"># print(s[-1])  #-表示倒数</span></span><br><span class="line"><span class="comment">#切片:从一个字符串中提取一部分内容</span></span><br><span class="line"><span class="comment">#s=“我叫周杰伦,你呢?你叫周润发吗?&quot;</span></span><br><span class="line"><span class="comment">#print(s[3:6])#从索引3位置进行切片，切到6结束，坑:切片拿不到第二个位置的元素</span></span><br><span class="line"><span class="comment">#语法: s[start:end] 从start到end进行切片。但是取不到end [start,end)</span></span><br><span class="line"><span class="comment">#print(s[0:5])</span></span><br><span class="line"><span class="comment">#print(s[:5])#如果start是从开头进行切片,可以省略</span></span><br><span class="line"><span class="comment"># print(s[6:])#从start开始一直截取到末尾</span></span><br><span class="line"><span class="comment">#∶表示如果左右两端有空白，表示开头或者结尾</span></span><br><span class="line"><span class="comment"># print(s[:])</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#print(s[-3:-1])#目前还是只能从左往右切片</span></span><br><span class="line"><span class="comment">#print(s[-1:-3])#没结果,这里是坑!!!!</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#s =“我爱你&quot;</span></span><br><span class="line"><span class="comment">#可以给切片添加步长来控制切片的方向# print(s[::-1])#-表示从右往左</span></span><br><span class="line"><span class="comment">#语法: s[start:end:step] 从start切到end，每step个元素出来一个元素</span></span><br><span class="line"><span class="comment">#s = &quot;abcdefghijklmnopqrst&quot;</span></span><br><span class="line"><span class="comment">#print(s[2:11:3])</span></span><br><span class="line"><span class="comment">#print(s[-1:-10:-3])</span></span><br></pre></td></tr></table></figure>
+
+<p>3.字符串常用操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#字符串的操作一般不会对原字符串产生影响。一般是返回一个新的字符串#3.1字符串大小写转换</span></span><br><span class="line"><span class="comment"># s = &quot;python&quot;</span></span><br><span class="line"><span class="comment">#s1 = s.capitalize()</span></span><br><span class="line"><span class="comment"># print(s1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#s1 = s.title() #单词首字母大写</span></span><br><span class="line"><span class="comment">#s1 =s.lower() #变成小写字母</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># s = &quot;i have a dream&quot;</span></span><br><span class="line"><span class="comment"># s1 = s.upper()#把所有字母变成大写字母</span></span><br><span class="line"><span class="comment">#print(s1)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如何忽略大小写来进行判断 =&gt; upper() 重点</span></span><br><span class="line">verify_code = <span class="string">&quot;xAd1&quot;</span></span><br><span class="line">user_input = <span class="built_in">input</span>(<span class="string">f&quot;请输入验证码(<span class="subst">&#123;verify_code&#125;</span>): &quot;</span>) <span class="comment">#加个小括号让打印的时候逼真一点</span></span><br><span class="line"><span class="keyword">if</span> verify_code.upper() == user_input.upper():</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;验证码正确&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;验证码不正确&quot;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3.2替换和切割(*)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">strip() <span class="comment">#去掉字符串左右两端的空白符(空格，lt(缩进),\n)</span></span><br><span class="line">s = <span class="string">&quot;  你好，我叫   周杰伦      &quot;</span></span><br><span class="line">s1 = s.strip()</span><br><span class="line"><span class="built_in">print</span>(s1)</span><br><span class="line"></span><br><span class="line"><span class="comment">##案例</span></span><br><span class="line">username = <span class="built_in">input</span>(<span class="string">&quot;请输入用户名:&quot;</span> ).strip()</span><br><span class="line">password = <span class="built_in">input</span>(<span class="string">&quot;请输入密码:&quot;</span>).strip()</span><br><span class="line"><span class="keyword">if</span> username == <span class="string">&quot;admin&quot;</span>:</span><br><span class="line">	<span class="keyword">if</span> password == <span class="string">&quot;123456&quot;</span>:</span><br><span class="line">	   <span class="built_in">print</span>(<span class="string">&quot;登录成功&quot;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">       <span class="built_in">print</span>(<span class="string">&quot;登录失败!&quot;</span>)</span><br><span class="line"> <span class="keyword">else</span>:</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;登录失败!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#replace(old, new) 字符串替换</span></span><br><span class="line">s =<span class="string">&quot;你好啊，我叫赛利亚&quot;</span></span><br><span class="line">s1 = s.replace(<span class="string">&quot;赛利亚&quot;</span>，<span class="string">&quot;周杰伦&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(s1)</span><br><span class="line">a = <span class="string">&quot;hello i am a good man ! &quot;</span></span><br><span class="line">a1 = a.replace( <span class="string">&quot; &quot;</span>,<span class="string">&quot;&quot;</span>)<span class="comment">#去掉所有的空格</span></span><br><span class="line"><span class="built_in">print</span>(a1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># split(用什么切割)字符串切割，用什么切，就会损失掉谁.</span></span><br><span class="line">a = <span class="string">&quot;python_java_c_c#_javascript&quot;</span></span><br><span class="line">lst = a.split(<span class="string">&quot;_&quot;</span>) <span class="comment">#切割之后的结果会放在列表当中 </span></span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line">lst = a.split(<span class="string">&quot;_java_&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br></pre></td></tr></table></figure>
+
+<p>字符串查找与判断</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查找</span></span><br><span class="line">s =<span class="string">&quot;你好啊．我叫周润发&quot;</span></span><br><span class="line">ret = s.find(<span class="string">&quot;周润发12312&quot;</span>)  <span class="comment">#返回如果是-1就是没有该字符串出现</span></span><br><span class="line"><span class="built_in">print</span>(ret)</span><br><span class="line">ret = s.index(<span class="string">&quot;周润发12312&quot;</span>)  <span class="comment">#如果报错就是没有</span></span><br><span class="line"><span class="built_in">print</span>(ret)</span><br><span class="line"><span class="built_in">print</span>(“周润发<span class="string">&quot; in s)  # in可以做条件上的判断</span></span><br><span class="line"><span class="string">print(&quot;</span>周润发<span class="string">&quot; not in s)  # not in 判断是否不存在</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#判断</span></span><br><span class="line"><span class="string">name = input(&quot;</span>请输入你的名字:<span class="string">&quot;)  ##判断你是不是姓张</span></span><br><span class="line"><span class="string">if name.startswith(&quot;</span>张<span class="string">&quot;): #判断字符串是否以xxxxx开头，endswith()</span></span><br><span class="line"><span class="string">	print(&quot;</span>你姓张<span class="string">&quot;)</span></span><br><span class="line"><span class="string">else:</span></span><br><span class="line"><span class="string">	print(&quot;</span>不姓张<span class="string">&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">money = input(&quot;</span>请输入你都里的钱:<span class="string">&quot;) </span></span><br><span class="line"><span class="string">if money.isdigit():     #判断字符串是否由整数组成 isdecimal()由小数组成</span></span><br><span class="line"><span class="string">	money = int(money)</span></span><br><span class="line"><span class="string">	print(&quot;</span>可以花钱了<span class="string">&quot;)</span></span><br><span class="line"><span class="string">else:</span></span><br><span class="line"><span class="string">	print(&quot;</span>对不起,您输入有误....<span class="string">&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#补充</span></span><br><span class="line"><span class="string">s = &quot;</span>hello<span class="string">&quot;</span></span><br><span class="line"><span class="string">print(len(s))# length长度</span></span><br><span class="line"><span class="string"># join()</span></span><br><span class="line"><span class="string">s = &quot;</span>python_java_c_javascript<span class="string">&quot;</span></span><br><span class="line"><span class="string">lst = s.split(&quot;</span>_<span class="string">&quot;)</span></span><br><span class="line"><span class="string">print(lst)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">lst =[&#x27;赵本山&#x27;，&#x27;王大拿&#x27;,，‘大张伟&#x27;,&#x27;马大哈&quot;</span>] </span><br><span class="line"><span class="comment">#用_把上面的人的名字连起来</span></span><br><span class="line">s= <span class="string">&quot;_&quot;</span>.join(lst)</span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+
+<p><strong>list列表</strong></p>
+<p>定义:能装东西的东西<br>在python中用[]来表示一个列表。列表中的元素通过,隔开</p>
+<p>a &#x3D;[“张三丰”，”张无忌”，“张绍刚”，[1,2,3,True,]] #列表里也可以放列表</p>
+<p>#特性:<br>1.也像字符串一样也有索引和切片<br>2.索引如果超过范围会报错<br>3.可以用for循环进行遍历<br>4.用len可以拿到列表的长度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#列表的增删改查(*)lst = []</span></span><br><span class="line"><span class="comment">#向列表中添加内容</span></span><br><span class="line"><span class="comment">#append()追加</span></span><br><span class="line">lst.append(<span class="string">&quot;张绍刚&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;赵本山&quot;</span>)</span><br><span class="line">lst.append(<span class="string">&quot;张无忌&quot;</span>)</span><br><span class="line"><span class="comment">#insert()插入</span></span><br><span class="line">lst.insert(<span class="number">0</span>,<span class="string">&quot;赵敏&quot;</span>)</span><br><span class="line"><span class="comment">#extend()可以合并两个列表，批量的添加</span></span><br><span class="line">lst.extend([<span class="string">&quot;武则天&quot;</span>，<span class="string">&quot;嬴政&quot;</span>，<span class="string">&quot;马超&quot;</span>])</span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"></span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">ret = lst.pop(<span class="number">3</span>)<span class="comment">#给出被删除的索引．返回被删除的元素</span></span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"><span class="built_in">print</span>(ret)</span><br><span class="line">lst.remove(<span class="string">&quot;马超&quot;</span>)<span class="comment">#删除某个元素(*)</span></span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改</span></span><br><span class="line"><span class="comment"># lst[4] =“恺&quot;#直接用索引就可以进行修改操作</span></span><br><span class="line"><span class="comment"># print( lst)</span></span><br><span class="line"><span class="comment">#查询</span></span><br><span class="line"><span class="comment">#print( lst[3])#直接用索引进行查询操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#小练习:#</span></span><br><span class="line">把所有的姓张的人修改成姓王</span><br><span class="line">lst =[<span class="string">&#x27;赵敏&#x27;</span>，<span class="string">&#x27;张绍刚&#x27;</span>，<span class="string">&#x27;张无忌&#x27;</span>，<span class="string">&#x27;武则天&#x27;</span>，<span class="string">&#x27;嬴政&#x27;</span>，<span class="string">&#x27;马超&#x27;</span>]</span><br><span class="line"><span class="comment"># lst[1]=&quot;王绍刚&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for item in lst:#此时，我们看不到元素的索引位置</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(lst)): <span class="comment">#len(lst)列表的长度，——&gt;可以直接拿到列表的for循环</span></span><br><span class="line">	item = lst[i]<span class="comment"># item依然是列表中的每一项</span></span><br><span class="line">	<span class="keyword">if</span> item.startswith(张<span class="string">&quot;)∶</span></span><br><span class="line"><span class="string">	   #张绍刚</span></span><br><span class="line"><span class="string">	   new_name =&quot;</span>王<span class="string">&quot;+item[1:]</span></span><br><span class="line"><span class="string">       print(new_name)</span></span><br><span class="line"><span class="string">     #把新名字丢回列表(需要索引了?)</span></span><br><span class="line"><span class="string">     lst[i] = new_name #修改</span></span><br><span class="line"><span class="string">print(lst)</span></span><br><span class="line"><span class="string">#列表排序</span></span><br><span class="line"><span class="string">lst.sort()  #对列表进行升序排序</span></span><br><span class="line"><span class="string">lst.sort(reverse=Ture)  #reverse:翻转</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">#列表的循环删除</span></span><br><span class="line"><span class="string">lst =[赵敏&#x27;，&quot;</span>张绍刚<span class="string">&#x27;，&quot;张无忌&#x27;</span>，<span class="string">&#x27;武则天&#x27;</span>，<span class="string">&#x27;嬴政&#x27;</span>，<span class="string">&#x27;马超&#x27;</span>]</span><br><span class="line">temp =[]<span class="comment"># 准备一个临时列表，负责存储要删除的内容</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> lst:</span><br><span class="line">	<span class="keyword">if</span> item.startswith(<span class="string">&quot;张&quot;</span>)∶</span><br><span class="line">	    temp.append(item)<span class="comment">#把要删除的内容记录下来</span></span><br><span class="line">        <span class="comment">#lst.remove(item)  #有bug</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> temp:</span><br><span class="line">	lst.remove(item)<span class="comment">#去原列表中进行删除操作</span></span><br><span class="line"><span class="built_in">print</span>(lst)</span><br><span class="line"><span class="comment">#安全稳妥的循环删除方式:</span></span><br><span class="line"><span class="comment">#将要删除的内容保存在一个新列表中．循环新列表．删除老列表</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>tuple元组</p>
+<p>特点：不可变的列表<br>元组如果只有一个元素，需要在元素的末尾添加一个逗号<br>t&#x3D;(“哈哈哈”,)  #()默认是优先级<br>关于元组的不可变，指的是内存地址不能变。<br>set集合 #集合是无序的</p>
+<p>不可哈希: python中的set集合进行数据存储的时候．需要对数据进行哈希计算，根据计算出来的哈希值进行存储数据</p>
+<p>set集合要求存储的数据必须是可以进行哈希计算的.</p>
+<p>可变的数据类型，list, dict, set</p>
+<p>#可哈希:不可变的数据类型,int, str, tuple, bool.<br>#集合可以去重复  set(lst)<br>dic字典</p>
+<p>#首先,字典是以键值对的形式进行存储数据的<br>#字典的表示方式: {key: value,key2: value，key3:value}<br>#dic &#x3D; {“jay”:”周杰伦”，“金毛狮王”:“谢逊”}<br>#val &#x3D; dic[“金毛狮王”]#用起来只是把索引换成了key<br>#print(val)<br>#字典的key必须是可哈希的数据类型<br>#字典的value可以是任何数据类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dic =<span class="built_in">dict</span>()</span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>]= <span class="string">&quot;周杰伦&quot;</span> <span class="comment">#增</span></span><br><span class="line"><span class="comment">#print (dic)</span></span><br><span class="line"></span><br><span class="line">dic[<span class="string">&#x27;jay&#x27;</span>]= <span class="string">&quot;昆凌&quot;</span>   <span class="comment">#改  覆盖了</span></span><br><span class="line"><span class="comment">#print (dic)</span></span><br><span class="line">dic.setdefault(<span class="string">&#x27;key&#x27;</span>,<span class="string">&quot;666&quot;</span>)  <span class="comment">#设置基础值，前提是dic没有基础值或者键没冲突</span></span><br><span class="line"><span class="comment">#print (dic)</span></span><br><span class="line"></span><br><span class="line">dic.pop(<span class="string">&#x27;key&#x27;</span>)  <span class="comment">#删</span></span><br><span class="line"><span class="built_in">print</span> (dic)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> (dic[<span class="string">&#x27;jay&#x27;</span>])   <span class="comment">#查</span></span><br><span class="line"><span class="built_in">print</span> (dic.get(<span class="string">&#x27;key&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701956000836-30edfac8-1452-484f-862b-cb54358c561c.png" alt="image.png"></p>
+
+    </article>
+    
+    <div class="read-nums">
+      <!-- id 将作为查询条件 -->
+      <span id="2023/12/10/python语法/" class="leancloud_visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">浏览量</em>
+        <i class="leancloud-visitors-count"></i>
+      </span>
+    </div>
+    <div class="comments-intro">
+      <h2>评论区</h2>
+      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
+    </div>
+    <div id="vcomments" class="vcomments"></div>
+    
+  </div>
+  <div class="article-catelogue">
+    <div class="article-catelogue--wrapper">
+      <div class="catelogue catelogue-1">
+        <h3>目录</h3>
+        
+      </div>
+      
+        <div class="catelogue catelogue-2">
+          
+            <p>
+              <span>上一篇：</span>
+              <a href="/2023/12/10/网络基础/">网络基础</a>
+            </p>
+           
+          
+            <p>
+              <span>下一篇</span>
+              <a href="/2023/12/10/html/">html</a>
+            </p>
+          
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // var定义，避免pjax重新进来造成的重复声明错误
+  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
+  new Valine({
+    el: '#vcomments',
+    appId: config.appId,
+    appKey: config.appKey,
+    placeholder: config.placeholder,
+    meta: config.meta,
+    recordIP: config.recordIP,
+    visitor: config.visitor,
+    enableQQ: config.enableQQ,
+    path: '2023/12/10/python语法/'
+  })
+</script>
+
+
+<script>
+  $(document).on('pjax:complete', function() {
+    const tocs = document.querySelector('.toc')
+    const links = tocs ? tocs.querySelectorAll('a') : []
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = decodeURIComponent(e.href)
+        href.search(/#(.*)/)
+        const id = RegExp.$1
+        const target = document.querySelector('#' + id)
+        const top = target.offsetTop
+        document.documentElement.scrollTo({
+          top: top - 100,
+          behavior: 'smooth'
+        })
+        e.preventDefault()
+      })
+    })
+  })
+</script> 
+
+</div>
+      <div class="main-right-wrapper"><div class="main-right">
+  <div class="main-right--board">
+    <div class="main-right--title">
+      <h5>公告栏</h5>
+      <i class="iconfont icon-gonggao"></i>
+    </div>
+    <div class="main-right--content">
+      Hello 
+    </div>
+  </div>
+
+  <div id="aplayer" class="main-right--music"></div>
+
+  <div class="operate-items">
+    <div class="operate-item backtop">
+      <i class="iconfont icon-huidaodingbu"></i>
+      <span>回到顶部</span>
+    </div>
+    
+    <div class="operate-item turn-comment hidden">
+      <i class="iconfont icon-pinglun"></i>
+      <span>查看评论</span>
+    </div>
+    
+  </div>
+
+  <div class="main-right--site">
+    <div class="main-right--power">
+      <p>Power By <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a>.</p>
+      <p>Theme：<a target="_blank" rel="noopener" href="https://github.com/Aizener/hexo-theme-cola">Cola.</a></p>
+    </div>
+    <p class="main-right--refer"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/#/Integrated/index">蜀ICP备2022005384号-1</a> </p>
+  </div>
+</div>
+
+<script>
+  function setOperateItem () {
+    const reg = /\d{4}\/\d{2}\/\d{2}\/.+/
+    const path = location.pathname
+    const operateDom = document.querySelector('.main-right .operate-items')
+    const commentDom = document.querySelector('.turn-comment')
+    const cateloguDom = document.querySelector('.article-catelogue > .article-catelogue--wrapper');
+
+    if (commentDom) {
+      if (reg.test(path) || path.match(/\/log\/.+/)) {
+        commentDom.classList.remove('hidden')
+        const newDom = operateDom.cloneNode(true);
+        const _backtopDom = newDom.querySelector('.backtop');
+        const _commentDom = newDom.querySelector('.turn-comment');
+        _backtopDom.addEventListener('click', () => backTopEvent());
+        _commentDom.addEventListener('click', () => commentDomEvent());
+        cateloguDom.appendChild(newDom);
+      } else {
+        commentDom.classList.add('hidden')
+      }
+    }
+  }
+
+  setOperateItem()
+  const musics = JSON.parse(`[{"name":"安河桥","artist":"宋冬野","url":"http://ting6.yymp3.net:82/new25/songdongye/11.mp3","cover":"https://img2.baidu.com/it/u=1260056724,1076343118&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"},{"name":"卡布达","artist":"暂无","url":"/music/kabuda.mp3","cover":"https://img2.baidu.com/it/u=705831265,2862720033&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"}]`)
+  const ap = new APlayer({
+    container: document.querySelector('#aplayer'),
+    audio: musics,
+  })
+
+  $(document).on('pjax:complete', function() {
+    setOperateItem()
+  })
+
+  document.querySelector('.backtop').addEventListener('click', () => {
+    backTopEvent();
+  })
+  const dom = document.querySelector('.turn-comment')
+  dom && dom.addEventListener('click', () => {
+    commentDomEvent();
+  })
+
+  function backTopEvent() {
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
+  function commentDomEvent() {
+    const commentDom = document.querySelector('.comments-intro')
+    if (!commentDom) return
+    const top = commentDom.offsetTop, height = commentDom.offsetHeight
+    document.documentElement.scrollTo({
+      top: top - 2 * height,
+      behavior: 'smooth'
+    })
+  }
+</script></div>
+    </section>
+  </div>
+  <div id="progress" class="progress"></div>
+  <div id="gray" class="gray"></div>
+
+  <script>
+    function initScroll () {
+      document.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop
+        const pageHeight = doc.offsetHeight
+        const clientHeight = doc.clientHeight
+        const ratio = scrollTop / (pageHeight - clientHeight)
+        const progress = document.querySelector('#progress')
+        const avatarImg = document.querySelector('.main-left--avatar')
+        progress.style.width = (100 * ratio) + '%'
+        avatarImg.style.transform = `rotate(${360 * ratio}deg)`
+      })
+    }
+
+    const rootPath = "/"
+
+    const checkAndSetArticlePageLayout = () => {
+      const path = location.pathname.replace(rootPath, '');
+      if (
+        /^\/?\d{4}\/\d{2}\/\d{2}\/.*/.test(path) ||
+        /^log\/.+/.test(path)
+      ) {
+        $('.main-container, .main-right, .main-right-wrapper').addClass('is-article')
+      } else {
+        $('.main-container, .main-right, .main-right-wrapper').removeClass('is-article')
+      }
+    }
+
+    const gray = "none"
+    const setGrayStyle = () => {
+      if (gray === 'none') {
+        return
+      } else if (gray === 'index') {
+        location.pathname === '/' ? $('#gray').show() : $('#gray').hide()
+      } else if (gray === 'all') {
+        $('#gray').show()
+      }
+    }
+    setGrayStyle()
+
+
+    window.onload = function () {
+      checkAndSetArticlePageLayout()
+      setTimeout(() => {
+        $('#load').slideUp()
+        $('#container').slideToggle()
+        setTimeout(() => {
+          initScroll();
+        }, 500)
+      }, 500)
+    }
+    
+    let status = 0
+    // 对所有链接跳转事件绑定pjax容器container
+    $(document).pjax('a[target!=_blank]', '#main-container', {
+      container: '#main-container',
+      fragment: '#main-container',
+      timeout: 8000
+    })
+
+    $(document).on('pjax:start', function() {
+    })
+    $(document).on('pjax:complete', function() {
+      status = 0
+      $('.main-container').addClass('to-up').on('animationend', function() {
+        $(this).removeClass('to-up')
+      })
+      setGrayStyle()
+      checkAndSetArticlePageLayout()
+    })
+    $(document).on('pjax:popstate', function() {
+      status = -1
+      checkAndSetArticlePageLayout()
+    });
+  </script>
+</body>
+</html>
