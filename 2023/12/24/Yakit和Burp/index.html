@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——Yakit和postman | Hexo</title>
+  <title>我的技术与生活——Yakit和Burp | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——Yakit和postman`
+    document.title = `我的技术与生活——Yakit和Burp`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -193,7 +193,7 @@
   const ipt = document.querySelector('#search-input')
   const btn = document.querySelector('#search-btn')
   const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"Linux基本命令与ssh远程登录","path":"2023/12/10/Linux基本命令与ssh远程登录/"},{"title":"Yakit和postman","path":"2023/12/24/Yakit和postman/"},{"title":"axios交互","path":"2023/12/25/axios交互/"},{"title":"html","path":"2023/12/10/html/"},{"title":"php","path":"2023/12/17/php/"},{"title":"python语法","path":"2023/12/10/python语法/"},{"title":"sqli_less","path":"2024/01/01/sqli-less/"},{"title":"vue动态页面","path":"2023/12/17/vue动态页面/"},{"title":"sql注入MySQL5.7.26版本","path":"2023/12/24/sql注入MySQL5-7-26版本/"},{"title":"利用github搭建hexo博客","path":"2023/11/30/利用github搭建hexo博客/"},{"title":"笔记","path":"2023/11/30/笔记/"},{"title":"安卓病毒监听与Proxifier","path":"2023/12/10/安卓病毒监听与Proxifier/"},{"title":"网络基础","path":"2023/12/10/网络基础/"},{"title":"部署图床","path":"2023/11/30/部署图床/"},{"title":"钓鱼网站","path":"2023/11/30/钓鱼网站/"}]`)
+  const posts = JSON.parse(`[{"title":"Linux基本命令与ssh远程登录","path":"2023/12/10/Linux基本命令与ssh远程登录/"},{"title":"Yakit和Burp","path":"2023/12/24/Yakit和Burp/"},{"title":"axios交互","path":"2023/12/25/axios交互/"},{"title":"html","path":"2023/12/10/html/"},{"title":"php","path":"2023/12/17/php/"},{"title":"python语法","path":"2023/12/10/python语法/"},{"title":"sqli_less","path":"2024/01/01/sqli-less/"},{"title":"sql注入MySQL5.7.26版本","path":"2023/12/24/sql注入MySQL5-7-26版本/"},{"title":"vue动态页面","path":"2023/12/17/vue动态页面/"},{"title":"利用github搭建hexo博客","path":"2023/11/30/利用github搭建hexo博客/"},{"title":"安卓病毒监听与Proxifier","path":"2023/12/10/安卓病毒监听与Proxifier/"},{"title":"网络基础","path":"2023/12/10/网络基础/"},{"title":"笔记","path":"2023/11/30/笔记/"},{"title":"部署图床","path":"2023/11/30/部署图床/"},{"title":"钓鱼网站","path":"2023/11/30/钓鱼网站/"}]`)
   ipt.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -324,11 +324,11 @@
       </p>
       <p class="main-left--subtitle">
         <span>最近动态：</span>
-        <span>今天</span>
+        <span>3天前</span>
       </p>
       <p class="main-left--subtitle">
         <span>上线时间：</span>
-        <span>34天</span>
+        <span>37天</span>
       </p>
       <p class="main-left--subtitle">
         <span>当前版本：</span>
@@ -344,7 +344,7 @@
 
 <div class="article-container">
   <div class="article">
-    <h1 class="article-title">Yakit和postman</h1>
+    <h1 class="article-title">Yakit和Burp</h1>
     <div class="article-info">
       <div class="article-info--item">
         <div class="article-info--info">
@@ -366,13 +366,38 @@
       </div>
     </div>
     <article class="article-content markdown-body">
-      <p><em>打开小皮，进入Yakit打开MITM</em><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703339274029-322d3d3e-eb0a-42d5-b6a5-43b9fb0530e2.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703339359145-c59efc39-2488-4b29-9149-e085c2a181ba.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703339396516-144024ca-c9e6-435f-bb99-998f548beeff.png" alt="image.png"><br>抓包<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703340070771-e58bab18-d1fa-4794-a17f-1c532faeb92e.png" alt="image.png"><br>Postman<br>找到api<br>然后把链接放到postman<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703340590530-ca9e6bf7-6cc0-4fd1-9550-d1d5b224ed28.png" alt="image.png"></p>
+      <p><em>打开小皮，进入Yakit打开MITM</em></p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703339274029-322d3d3e-eb0a-42d5-b6a5-43b9fb0530e2.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703339359145-c59efc39-2488-4b29-9149-e085c2a181ba.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703339396516-144024ca-c9e6-435f-bb99-998f548beeff.png" alt="img"></p>
+<p>抓包</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703340070771-e58bab18-d1fa-4794-a17f-1c532faeb92e.png" alt="img"></p>
+<p>Postman</p>
+<p>找到api</p>
+<p>然后把链接放到postman</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703340590530-ca9e6bf7-6cc0-4fd1-9550-d1d5b224ed28.png" alt="img"></p>
+<p>Burp</p>
+<p>下载一个Java  jdk-19_windows-x64_bin.exe和burp破解版</p>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2023/zip/40675928/1703768246126-716f58d1-198a-48da-9bf8-b29acde9d380.zip">📎BurpSuitePro_v2023.1.zip</a></p>
+<p>在汉化启动下载</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703767511927-12a683a3-3080-466a-9beb-7a4c50c22e98.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703767555805-ca429c60-3a54-41e3-851a-881b7b431184.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703767647306-23c2744c-79d2-4fee-a6b5-a097c34f36c3.png" alt="img"></p>
+<p>右键发送到重放器(Ctrl+R)</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703767830897-bea7f983-7f3e-4b23-b1f2-1fc0994efb62-170415748956413.png" alt="img"></p>
+<p>到重放器开始请求，响应</p>
+<p>右键发到intruder进行爆破</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703768031358-897f0e9e-2cab-4afc-94c9-a53d9388ad47-170415748956415.png" alt="img"></p>
+<p>在payload进行定义payload集</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703768133000-4749d02a-9e5c-4255-9e32-62960da3dccf-170415748956417.png" alt="img"></p>
+<p>开始攻击</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703768183066-a01649d3-3cc6-434f-ac79-4d707613f830-170415748956419.png" alt="img"></p>
 
     </article>
     
     <div class="read-nums">
       <!-- id 将作为查询条件 -->
-      <span id="2023/12/24/Yakit和postman/" class="leancloud_visitors" data-flag-title="Your Article Title">
+      <span id="2023/12/24/Yakit和Burp/" class="leancloud_visitors" data-flag-title="Your Article Title">
         <em class="post-meta-item-text">浏览量</em>
         <i class="leancloud-visitors-count"></i>
       </span>
@@ -423,7 +448,7 @@
     recordIP: config.recordIP,
     visitor: config.visitor,
     enableQQ: config.enableQQ,
-    path: '2023/12/24/Yakit和postman/'
+    path: '2023/12/24/Yakit和Burp/'
   })
 </script>
 
