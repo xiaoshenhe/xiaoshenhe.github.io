@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——利用github搭建hexo博客 | Hexo</title>
+  <title>我的技术与生活——信息收集 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——利用github搭建hexo博客`
+    document.title = `我的技术与生活——信息收集`
   </script>
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -344,7 +344,7 @@
 
 <div class="article-container">
   <div class="article">
-    <h1 class="article-title">利用github搭建hexo博客</h1>
+    <h1 class="article-title">信息收集</h1>
     <div class="article-info">
       <div class="article-info--item">
         <div class="article-info--info">
@@ -360,46 +360,142 @@
             
           </div>
           
-          <p class="article-info--date">日期：2023-11-30 21:02:56</p>
+          <p class="article-info--date">日期：2024-01-07 21:38:57</p>
         </div>
         <img src="/imgs/default-cover.webp" alt="" class="article-cover">
       </div>
     </div>
     <article class="article-content markdown-body">
-      <p><strong>1.前提</strong></p>
-<ol>
-<li>提前安装好(node.js)<a target="_blank" rel="noopener" href="https://nodejs.org/en]">[https://nodejs.org/en]</a> 左边的那个</li>
-<li>提前安装好(GIt)<a target="_blank" rel="noopener" href="https://git-scm.com/downloads]">[https://git-scm.com/downloads]</a>  </li>
-<li>提前注册好一个github账号</li>
-<li>如果文章图片没有显示，请自行挂代理</li>
-</ol>
-<p><strong>2.操作步骤</strong></p>
-<ol>
-<li>在本地找个目录放博客源文件，路径不要有中文</li>
-<li>在选定的目录中，cmd进入<img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701344436825-bd01f240-04a1-44c1-b6c4-edea9648deb9.png" alt="image.png"></li>
-<li>使用npm命令安装Hexo，输入：</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>构建好的效果：<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701343373505-68ba8c5d-a1f2-4398-a522-ab1bdff58163.png" alt="image.png"><br>为了检测我们的网站雏形，分别按顺序输入以下三条命令：(cmd以下目录)<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701344515705-18afe2ac-07e0-4e0c-a947-ff363482f683.png" alt="image.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line"><span class="comment">#之后就可以访问127.0.0.1:4000访问blog了</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>3.配置ssh</strong><br>cd ~&#x2F;.ssh #检查本机已存在的ssh密钥<br>如果提示：No such file or directory 说明你是第一次使用git。<br>ssh-keygen -t rsa -C “邮件地址”<br>然后连续3次回车，最终会生成一个文件在用户目录下，<strong>打开用户目录</strong>，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701344780077-cc050588-305e-494a-8d6a-0da60d7b18dd.png" alt="image.png"><br>key填写C:\Users\Administrator.ssh\id_rsa.pub中的内容<br>然后尝试ssh连接,测试是否成功<br>ssh -T <a href="mailto:git@github.com">git@github.com</a> # 注意邮箱地址不用改<br>如果提示Are you sure you want to continue connecting (yes&#x2F;no)?，输入yes，然后会看到下面这个，就算成功：<br>Hi liuxianan! You’ve successfully authenticated, but GitHub does not provide shell access.<br>在选中的位置(blog目录下)打开cmd(以管理员身份)<br>npm install hexo-deployer-git –save<br>继续配置<br>git config –global user.name “luozhixiaowo”&#x2F;&#x2F; 你的github用户名，非昵称<br>git config –global user.email “<a href="mailto:xxx@qq.com">xxx@qq.com</a>“&#x2F;&#x2F; 填写你的github注册邮箱<br><strong>4.准备上传代码</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: git@github.com:luozhixiaowo/luozhixiaowo.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
-
-<p>在blog找到_config.yml</p>
-<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701350011565-36402859-9018-45b9-975a-c9280b4d7e97.png" alt="img"></p>
-<p>注意保持格式，缩进不对，会导致一会儿，上传不成功<br>最后上传<br><strong>hexo d</strong><br>每次上传成功之后，需要等待1-3分钟，用来刷新页面<br>类似这样的就代表成功<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1701345278608-4713a5c4-6d94-426f-985b-3dd8b3ed65ea.png" alt="image.png"><br><strong>5.hexo命令介绍</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">&quot;我的博客&quot;</span> == hexo new <span class="string">&quot;我的博客&quot;</span> <span class="comment">#新建文章，new后面可以是中文，不用加引号</span></span><br><span class="line">hexo new page <span class="string">&quot;pageName&quot;</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo g == hexo generate <span class="comment">#生成</span></span><br><span class="line">hexo s == hexo server <span class="comment">#启动服务预览</span></span><br><span class="line">hexo d == hexo deploy <span class="comment">#部署</span></span><br><span class="line"></span><br><span class="line">hexo server <span class="comment">#Hexo会监视文件变动并自动更新，无须重启服务器</span></span><br><span class="line">hexo server -s <span class="comment">#静态模式</span></span><br><span class="line">hexo server -p <span class="number">5000</span> <span class="comment">#更改端口</span></span><br><span class="line">hexo server -i <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="comment">#自定义 IP</span></span><br><span class="line">hexo clean <span class="comment">#清除缓存，若是网页正常情况下可以忽略这条命令</span></span><br><span class="line">hexo version <span class="comment">#查看Hexo的版本</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line"></span><br><span class="line">hexo s -g <span class="comment">#生成并本地预览</span></span><br><span class="line">hexo d -g <span class="comment">#生成并上传（重点）</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>6.hexo目录结构</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+– .deploy <span class="comment">#hexo deploy生成的文件</span></span><br><span class="line">+– node_modules <span class="comment">#npm组件</span></span><br><span class="line">+– public <span class="comment">#生成的静态网页文件</span></span><br><span class="line">+–scaffolds <span class="comment">#模板</span></span><br><span class="line">+– source <span class="comment">#博客正文和其他源文件</span></span><br><span class="line">| +– _posts <span class="comment">#我们自己写的文章以md结尾</span></span><br><span class="line">+– themes <span class="comment">#主题</span></span><br><span class="line">+– _config.yml <span class="comment">#全局配置文件</span></span><br><span class="line">– package.json <span class="comment">#定义了hexo所需要的各种模块</span></span><br></pre></td></tr></table></figure>
+      <p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704101367255-9bf669a2-c161-4a18-bd2a-be77ffb2d890.png" alt="image.png"><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704634622324-4b32271f-7930-4e80-9369-a49cf0a7ca2d.png" alt="image.png"><br>在线子域名挖掘：<br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704630358288-eeced6de-41c1-4f79-bd23-b056cf2a4fcb.png" alt="image.png"><br>子域名挖掘机：<br><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2024/rar/40675928/1704630683936-3a358e23-da91-49d0-a45f-006fcb63f3b0.rar?_lake_card=%7B%22src%22:%22https://www.yuque.com/attachments/yuque/0/2024/rar/40675928/1704630683936-3a358e23-da91-49d0-a45f-006fcb63f3b0.rar%22,%22name%22:%22Layer%E5%AD%90%E5%9F%9F%E5%90%8D%E6%8C%96%E6%8E%98%E6%9C%BA4.2%E7%BA%AA%E5%BF%B5%E7%89%88.rar%22,%22size%22:904164,%22ext%22:%22rar%22,%22source%22:%22%22,%22status%22:%22done%22,%22download%22:true,%22taskId%22:%22u26dbfc9b-888b-457a-a267-14ab7587e2a%22,%22taskType%22:%22upload%22,%22type%22:%22%22,%22__spacing%22:%22both%22,%22mode%22:%22title%22,%22id%22:%22ub43451b4%22,%22margin%22:%7B%22top%22:true,%22bottom%22:true%7D,%22card%22:%22file%22%7D">Layer子域名挖掘机4.2纪念版.rar</a><br><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/1704631332408-aa829fea-cff6-46db-a0ff-37b5f5434f4c.png" alt="image.png"><br>用来信息收集的网站：<br><a target="_blank" rel="noopener" href="https://fofa.info/toLogin">https://fofa.info/toLogin</a><br><a target="_blank" rel="noopener" href="https://quake.360.net/quake/#/index">https://quake.360.net/quake/#/index</a><br><a target="_blank" rel="noopener" href="https://hunter.qianxin.com/">https://hunter.qianxin.com/</a><br><a target="_blank" rel="noopener" href="https://www.zoomeye.org/business">https://www.zoomeye.org/business</a></p>
+<p>谷歌语法：</p>
+<table>
+<thead>
+<tr>
+<th><strong>算</strong>  <strong>符</strong></th>
+<th><strong>含</strong>    <strong>义</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AND&#x2F;空格</td>
+<td>所连接的关键词之间是“与”的关系;</td>
+</tr>
+<tr>
+<td>OR&#x2F;|</td>
+<td>所连接的关键词之间是“或”的关系</td>
+</tr>
+<tr>
+<td>-</td>
+<td>所连接的关键词之间是“非”的关系</td>
+</tr>
+<tr>
+<td>（）</td>
+<td>在检索式中括号里的运算将优先进行</td>
+</tr>
+<tr>
+<td>“”</td>
+<td>“”英文双引号中的内容作为一个整体被搜索; 精确匹配搜索</td>
+</tr>
+<tr>
+<td>*</td>
+<td>通配符-星号*，代表完整的字词; A * B、A * * B这两个是有区别的</td>
+</tr>
+<tr>
+<td>+</td>
+<td>强制搜索一般会被自动忽略的搜索关键词，如：who、the、of、am</td>
+</tr>
+<tr>
+<td>~</td>
+<td>同义符;在搜索词前使用，表示会和同时搜索相近词义的词;示例中会同搜元素Si</td>
+</tr>
+<tr>
+<td>..</td>
+<td>搜索数字范围限定</td>
+</tr>
+<tr>
+<td>filetype:</td>
+<td>把搜索范围限定在特定文件类型中; .pdf&#x2F;.doc&#x2F;.docx&#x2F;.ppt&#x2F;.pptx&#x2F;.xls&#x2F;.xlsx&#x2F;.rtf&#x2F;.txt&#x2F;.swf&#x2F;.ps</td>
+</tr>
+<tr>
+<td>site：</td>
+<td>把搜索范围限定在特定站点、某一站点特定频道、特定域名后缀中</td>
+</tr>
+<tr>
+<td>inurl:</td>
+<td>把搜索范围限定在url链接中</td>
+</tr>
+<tr>
+<td>allinurl:</td>
+<td>把搜索范围限定在url链接中, 只不过其后所有关键词均要在url链接中出现</td>
+</tr>
+<tr>
+<td>intitle</td>
+<td>把搜索范围限定在网页标题中</td>
+</tr>
+<tr>
+<td>allintitle:</td>
+<td>把搜索范围限定在网页标题中; 只不过其后所有关键词均要在网页标题中出现</td>
+</tr>
+<tr>
+<td>intext:</td>
+<td>把搜索范围限定在网页正文中; 忽略超链接文本、URL以及题目等</td>
+</tr>
+<tr>
+<td>inanchor:</td>
+<td>把搜索范围限定在链接锚文本文字中</td>
+</tr>
+<tr>
+<td>anchor:</td>
+<td>检索某一作者&#x2F;发明人的论著; 只在Google Scholar中可用</td>
+</tr>
+<tr>
+<td>link：</td>
+<td>检索所有链接到某个特定URL网址的网页;只能单独使用</td>
+</tr>
+<tr>
+<td>cache:</td>
+<td>Google网页快照</td>
+</tr>
+<tr>
+<td>related：</td>
+<td>检索与某特定网页类似的网页</td>
+</tr>
+<tr>
+<td>info:</td>
+<td>用来显示与某链接相关的一系列搜索; 提供cache、similar-pages、link、related等连接</td>
+</tr>
+<tr>
+<td>Index  of</td>
+<td>可以帮助你寻找网络和FTP目录</td>
+</tr>
+<tr>
+<td>daterange:</td>
+<td>查找在一定的日期或者一定的日期范围内; 只关注被Google收录的时间</td>
+</tr>
+<tr>
+<td>location:</td>
+<td>指定地区区域内查询关键词相关的网页</td>
+</tr>
+<tr>
+<td>weather:</td>
+<td>查询该地区或城市当前的天气状况</td>
+</tr>
+<tr>
+<td>stocks:</td>
+<td>查询股票信息; 一般源于专业财经网站</td>
+</tr>
+<tr>
+<td>define:</td>
+<td>返回包含查询关键词定义的网面</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://www.yuque.com/attachments/yuque/0/2024/zip/40675928/1704635122154-fd9ee181-fb02-45e5-b873-b3d7580d9d82.zip">📎web finder 2.9.zip</a>   小米范</p>
+<p><img src="https://raw.githubusercontent.com/xiaoshenhe/tuchuang/main/img/image-20240107214707587.png" alt="image-20240107214707587"></p>
 
     </article>
     
     <div class="read-nums">
       <!-- id 将作为查询条件 -->
-      <span id="2023/11/30/利用github搭建hexo博客/" class="leancloud_visitors" data-flag-title="Your Article Title">
+      <span id="2024/01/07/信息收集/" class="leancloud_visitors" data-flag-title="Your Article Title">
         <em class="post-meta-item-text">浏览量</em>
         <i class="leancloud-visitors-count"></i>
       </span>
@@ -422,13 +518,13 @@
           
             <p>
               <span>上一篇：</span>
-              <a href="/2023/11/30/部署图床/">部署图床</a>
+              <a href="/2024/01/07/靶机1/">靶机1</a>
             </p>
            
           
             <p>
               <span>下一篇</span>
-              <a href="/2023/11/30/笔记/">笔记</a>
+              <a href="/2024/01/05/绕过安全狗（免费）/">绕过安全狗（免费）</a>
             </p>
           
         </div>
@@ -450,7 +546,7 @@
     recordIP: config.recordIP,
     visitor: config.visitor,
     enableQQ: config.enableQQ,
-    path: '2023/11/30/利用github搭建hexo博客/'
+    path: '2024/01/07/信息收集/'
   })
 </script>
 
